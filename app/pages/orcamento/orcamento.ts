@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
-  templateUrl: 'build/pages/home/home.html'
+  templateUrl: 'build/pages/orcamento/orcamento.html'
 })
-export class HomePage {
+export class OrcamentoPage {
   constructor(public navCtrl: NavController) {
   
   }

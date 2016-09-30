@@ -4,332 +4,354 @@
 1 verbose cli   'install',
 1 verbose cli   'ng2-translate',
 1 verbose cli   '--save' ]
-2 info using npm@2.15.5
-3 info using node@v4.4.5
-4 verbose install initial load of C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\package.json
+2 info using npm@2.15.9
+3 info using node@v4.5.0
+4 verbose install initial load of C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\package.json
 5 warn package.json smartweeklybudget@ No repository field.
 6 warn package.json smartweeklybudget@ No README data
 7 warn package.json smartweeklybudget@ No license field.
-8 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\del\package.json
-9 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\es6-shim\package.json
-10 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\gulp\package.json
-11 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\gulp-watch\package.json
-12 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionic-angular\package.json
-13 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionic-gulp-browserify-typescript\package.json
-14 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionic-gulp-fonts-copy\package.json
-15 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionic-gulp-html-copy\package.json
-16 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionic-gulp-sass-build\package.json
-17 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionic-gulp-scripts-copy\package.json
-18 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionic-gulp-tslint\package.json
-19 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionic-native\package.json
-20 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionicons\package.json
-21 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ng2-translate\package.json
-22 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\reflect-metadata\package.json
-23 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\run-sequence\package.json
-24 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\rxjs\package.json
-25 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\tslint-ionic-rules\package.json
-26 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\zone.js\package.json
-27 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\@angular\common\package.json
-28 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\@angular\compiler\package.json
-29 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\@angular\core\package.json
-30 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\@angular\forms\package.json
-31 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\@angular\http\package.json
-32 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\@angular\platform-browser\package.json
-33 verbose installManyTop reading scoped package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\@angular\platform-browser-dynamic\package.json
-34 info package.json ionic-gulp-fonts-copy@1.0.0 No repository field.
-35 info package.json ionic-gulp-fonts-copy@1.0.0 No license field.
-36 info package.json @angular/common@2.0.0-rc.4 No description
+8 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\del\package.json
+9 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\es6-shim\package.json
+10 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\gulp\package.json
+11 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\gulp-watch\package.json
+12 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionic-angular\package.json
+13 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionic-gulp-browserify-typescript\package.json
+14 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionic-gulp-fonts-copy\package.json
+15 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionic-gulp-html-copy\package.json
+16 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionic-gulp-sass-build\package.json
+17 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionic-gulp-scripts-copy\package.json
+18 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionic-gulp-tslint\package.json
+19 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionic-native\package.json
+20 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionicons\package.json
+21 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\reflect-metadata\package.json
+22 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\run-sequence\package.json
+23 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\rxjs\package.json
+24 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\tslint-ionic-rules\package.json
+25 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\zone.js\package.json
+26 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\@angular\common\package.json
+27 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\@angular\compiler\package.json
+28 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\@angular\core\package.json
+29 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\@angular\forms\package.json
+30 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\@angular\http\package.json
+31 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\@angular\platform-browser\package.json
+32 verbose installManyTop reading scoped package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\@angular\platform-browser-dynamic\package.json
+33 info package.json ionic-gulp-fonts-copy@1.0.0 No repository field.
+34 info package.json ionic-gulp-fonts-copy@1.0.0 No license field.
+35 info package.json @angular/common@2.0.0-rc.4 No description
+36 info package.json @angular/common@2.0.0-rc.4 No README data
 37 info package.json @angular/compiler@2.0.0-rc.4 No description
-38 info package.json @angular/forms@0.2.0 No description
-39 info package.json @angular/http@2.0.0-rc.4 No description
-40 info package.json @angular/core@2.0.0-rc.4 No description
+38 info package.json @angular/core@2.0.0-rc.4 No description
+39 info package.json @angular/forms@0.2.0 No description
+40 info package.json @angular/http@2.0.0-rc.4 No description
 41 info package.json @angular/platform-browser@2.0.0-rc.4 No description
 42 info package.json @angular/platform-browser-dynamic@2.0.0-rc.4 No description
-43 verbose readDependencies loading dependencies from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\package.json
-44 verbose install ng2-translate is installed as 2.5.0
-45 silly cache add args [ 'ng2-translate', null ]
-46 verbose cache add spec ng2-translate
-47 silly cache add parsed spec Result {
-47 silly cache add   raw: 'ng2-translate',
-47 silly cache add   scope: null,
-47 silly cache add   name: 'ng2-translate',
-47 silly cache add   rawSpec: '',
-47 silly cache add   spec: 'latest',
-47 silly cache add   type: 'tag' }
-48 silly addNamed ng2-translate@latest
-49 verbose addNamed "latest" is being treated as a dist-tag for ng2-translate
-50 info addNameTag [ 'ng2-translate', 'latest' ]
-51 silly mapToRegistry name ng2-translate
-52 silly mapToRegistry using default registry
-53 silly mapToRegistry registry https://registry.npmjs.org/
-54 silly mapToRegistry data Result {
-54 silly mapToRegistry   raw: 'ng2-translate',
-54 silly mapToRegistry   scope: null,
-54 silly mapToRegistry   name: 'ng2-translate',
-54 silly mapToRegistry   rawSpec: '',
-54 silly mapToRegistry   spec: 'latest',
-54 silly mapToRegistry   type: 'tag' }
-55 silly mapToRegistry uri https://registry.npmjs.org/ng2-translate
-56 verbose addNameTag registry:https://registry.npmjs.org/ng2-translate not in flight; fetching
-57 verbose request uri https://registry.npmjs.org/ng2-translate
-58 verbose request no auth needed
-59 info attempt registry request try #1 at 13:20:18
-60 verbose request id 7086b64c5a996b3c
-61 verbose etag "24J4UBOPA6B7G0ELMZPN41WQU"
-62 http request GET https://registry.npmjs.org/ng2-translate
-63 http 304 https://registry.npmjs.org/ng2-translate
-64 verbose headers { date: 'Thu, 29 Sep 2016 16:20:19 GMT',
-64 verbose headers   via: '1.1 varnish',
-64 verbose headers   'cache-control': 'max-age=300',
-64 verbose headers   etag: '"24J4UBOPA6B7G0ELMZPN41WQU"',
-64 verbose headers   age: '238',
-64 verbose headers   connection: 'keep-alive',
-64 verbose headers   'x-served-by': 'cache-gru7125-GRU',
-64 verbose headers   'x-cache': 'HIT',
-64 verbose headers   'x-cache-hits': '1',
-64 verbose headers   'x-timer': 'S1475166019.400848,VS0,VE0',
-64 verbose headers   vary: 'Accept-Encoding' }
-65 silly get cb [ 304,
-65 silly get   { date: 'Thu, 29 Sep 2016 16:20:19 GMT',
-65 silly get     via: '1.1 varnish',
-65 silly get     'cache-control': 'max-age=300',
-65 silly get     etag: '"24J4UBOPA6B7G0ELMZPN41WQU"',
-65 silly get     age: '238',
-65 silly get     connection: 'keep-alive',
-65 silly get     'x-served-by': 'cache-gru7125-GRU',
-65 silly get     'x-cache': 'HIT',
-65 silly get     'x-cache-hits': '1',
-65 silly get     'x-timer': 'S1475166019.400848,VS0,VE0',
-65 silly get     vary: 'Accept-Encoding' } ]
-66 verbose etag https://registry.npmjs.org/ng2-translate from cache
-67 verbose get saving ng2-translate to C:\Users\ewerton.w.da.silva\AppData\Roaming\npm-cache\registry.npmjs.org\ng2-translate\.cache.json
-68 verbose correctMkdir C:\Users\ewerton.w.da.silva\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
-69 silly addNameTag next cb for ng2-translate with tag latest
-70 silly addNamed ng2-translate@2.5.0
-71 verbose addNamed "2.5.0" is a plain semver version for ng2-translate
-72 silly cache afterAdd ng2-translate@2.5.0
-73 verbose afterAdd C:\Users\ewerton.w.da.silva\AppData\Roaming\npm-cache\ng2-translate\2.5.0\package\package.json not in flight; writing
-74 verbose correctMkdir C:\Users\ewerton.w.da.silva\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
-75 verbose afterAdd C:\Users\ewerton.w.da.silva\AppData\Roaming\npm-cache\ng2-translate\2.5.0\package\package.json written
-76 silly install resolved [ { name: 'ng2-translate',
-76 silly install resolved     description: 'An implementation of angular translate for Angular 2',
-76 silly install resolved     scripts:
-76 silly install resolved      { test: 'tsc && karma start',
-76 silly install resolved        'test-watch': 'tsc && concurrently "tsc -w" "karma start karma.conf.js"',
-76 silly install resolved        commit: 'npm run prepublish && npm test && git-cz',
-76 silly install resolved        prepublish: 'tsc && node make.js',
-76 silly install resolved        'semantic-release': 'semantic-release pre && npm publish && semantic-release post' },
-76 silly install resolved     repository:
-76 silly install resolved      { type: 'git',
-76 silly install resolved        url: 'git+https://github.com/ocombe/ng2-translate.git' },
-76 silly install resolved     keywords: [ 'angular', 'angular2', 'translate', 'i18n' ],
-76 silly install resolved     author: { name: 'Olivier Combe' },
-76 silly install resolved     license: 'MIT',
-76 silly install resolved     bugs: { url: 'https://github.com/ocombe/ng2-translate/issues' },
-76 silly install resolved     main: 'ng2-translate.js',
-76 silly install resolved     typings: './ng2-translate.d.ts',
-76 silly install resolved     homepage: 'https://github.com/ocombe/ng2-translate',
-76 silly install resolved     peerDependencies: { '@angular/core': '~2.0.0', '@angular/http': '~2.0.0' },
-76 silly install resolved     devDependencies:
-76 silly install resolved      { '@angular/common': '2.0.0',
-76 silly install resolved        '@angular/compiler': '2.0.0',
-76 silly install resolved        '@angular/core': '2.0.0',
-76 silly install resolved        '@angular/http': '2.0.0',
-76 silly install resolved        '@angular/platform-browser': '2.0.0',
-76 silly install resolved        '@angular/platform-browser-dynamic': '2.0.0',
-76 silly install resolved        '@types/hammerjs': '2.0.32',
-76 silly install resolved        '@types/jasmine': '2.2.33',
-76 silly install resolved        '@types/node': '6.0.38',
-76 silly install resolved        'awesome-typescript-loader': '2.2.4',
-76 silly install resolved        codelyzer: '0.0.28',
-76 silly install resolved        commitizen: '2.8.6',
-76 silly install resolved        concurrently: '2.2.0',
-76 silly install resolved        'core-js': '2.4.1',
-76 silly install resolved        'cz-conventional-changelog': '1.2.0',
-76 silly install resolved        'istanbul-instrumenter-loader': '0.2.0',
-76 silly install resolved        'jasmine-core': '2.5.1',
-76 silly install resolved        karma: '1.3.0',
-76 silly install resolved        'karma-chrome-launcher': '2.0.0',
-76 silly install resolved        'karma-coverage': '1.1.1',
-76 silly install resolved        'karma-jasmine': '1.0.2',
-76 silly install resolved        'karma-mocha-reporter': '^2.1.0',
-76 silly install resolved        'karma-sourcemap-loader': '^0.3.7',
-76 silly install resolved        'karma-webpack': '^1.8.0',
-76 silly install resolved        'reflect-metadata': '0.1.8',
-76 silly install resolved        rxjs: '5.0.0-beta.12',
-76 silly install resolved        'semantic-release': '4.3.5',
-76 silly install resolved        'source-map-loader': '0.1.5',
-76 silly install resolved        systemjs: '0.19.38',
-76 silly install resolved        'systemjs-builder': '0.15.31',
-76 silly install resolved        'ts-helpers': '1.1.1',
-76 silly install resolved        tslint: '3.15.1',
-76 silly install resolved        'tslint-loader': '2.1.5',
-76 silly install resolved        typescript: '2.0.2',
-76 silly install resolved        webpack: '2.1.0-beta.21',
-76 silly install resolved        'zone.js': '0.6.22' },
-76 silly install resolved     config: { commitizen: [Object] },
-76 silly install resolved     version: '2.5.0',
-76 silly install resolved     gitHead: 'dc47974d80ac71ecd6fc18a2063224301d6b9a95',
-76 silly install resolved     _id: 'ng2-translate@2.5.0',
-76 silly install resolved     _shasum: 'c7f3aebcce71ce673e35640f1aabaf7b2940b8ad',
-76 silly install resolved     _from: 'ng2-translate@latest',
-76 silly install resolved     _npmVersion: '3.10.7',
-76 silly install resolved     _nodeVersion: '5.12.0',
-76 silly install resolved     _npmUser: { name: 'ocombe', email: 'olivier.combe@gmail.com' },
-76 silly install resolved     dist:
-76 silly install resolved      { shasum: 'c7f3aebcce71ce673e35640f1aabaf7b2940b8ad',
-76 silly install resolved        tarball: 'https://registry.npmjs.org/ng2-translate/-/ng2-translate-2.5.0.tgz' },
-76 silly install resolved     maintainers: [ [Object] ],
-76 silly install resolved     _npmOperationalInternal:
-76 silly install resolved      { host: 'packages-12-west.internal.npmjs.com',
-76 silly install resolved        tmp: 'tmp/ng2-translate-2.5.0.tgz_1473919349289_0.6360235307365656' },
-76 silly install resolved     directories: {},
-76 silly install resolved     _resolved: 'https://registry.npmjs.org/ng2-translate/-/ng2-translate-2.5.0.tgz',
-76 silly install resolved     readme: 'ERROR: No README data found!' } ]
-77 info install ng2-translate@2.5.0 into C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB
-78 info installOne ng2-translate@2.5.0
-79 verbose installOne of ng2-translate to C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB not in flight; installing
-80 verbose correctMkdir C:\Users\ewerton.w.da.silva\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
-81 verbose lock using C:\Users\ewerton.w.da.silva\AppData\Roaming\npm-cache\_locks\ng2-translate-99809645295cf185.lock for C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ng2-translate
-82 silly install write writing ng2-translate 2.5.0 to C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ng2-translate
-83 verbose unbuild node_modules\ng2-translate
-84 info preuninstall ng2-translate@2.5.0
-85 info uninstall ng2-translate@2.5.0
-86 verbose unbuild rmStuff ng2-translate@2.5.0 from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules
-87 info postuninstall ng2-translate@2.5.0
-88 silly gentlyRm C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ng2-translate is being purged from base C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB
-89 verbose gentlyRm don't care about contents; nuking C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ng2-translate
-90 silly vacuum-fs purging C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ng2-translate
-91 silly vacuum-fs quitting because other entries in C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules
-92 verbose tar unpack C:\Users\ewerton.w.da.silva\AppData\Roaming\npm-cache\ng2-translate\2.5.0\package.tgz
-93 verbose tar unpacking to C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ng2-translate
-94 silly gentlyRm C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ng2-translate is being purged
-95 verbose gentlyRm don't care about contents; nuking C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ng2-translate
-96 silly gunzTarPerm modes [ '777', '666' ]
-97 silly gunzTarPerm extractEntry package.json
-98 silly gunzTarPerm modified mode [ 'package.json', 436, 438 ]
-99 silly gunzTarPerm extractEntry .npmignore
-100 silly gunzTarPerm modified mode [ '.npmignore', 436, 438 ]
-101 silly gunzTarPerm extractEntry README.md
-102 silly gunzTarPerm modified mode [ 'README.md', 436, 438 ]
-103 silly gunzTarPerm extractEntry LICENSE
-104 silly gunzTarPerm modified mode [ 'LICENSE', 436, 438 ]
-105 silly gunzTarPerm extractEntry karma.conf.js
-106 silly gunzTarPerm modified mode [ 'karma.conf.js', 436, 438 ]
-107 silly gunzTarPerm extractEntry make.js
-108 silly gunzTarPerm modified mode [ 'make.js', 436, 438 ]
-109 silly gunzTarPerm extractEntry ng2-translate.js
-110 silly gunzTarPerm modified mode [ 'ng2-translate.js', 436, 438 ]
-111 silly gunzTarPerm extractEntry bundles/ng2-translate.js
-112 silly gunzTarPerm modified mode [ 'bundles/ng2-translate.js', 436, 438 ]
-113 silly gunzTarPerm extractEntry config/helpers.js
-114 silly gunzTarPerm modified mode [ 'config/helpers.js', 436, 438 ]
-115 silly gunzTarPerm extractEntry config/karma.conf.js
-116 silly gunzTarPerm modified mode [ 'config/karma.conf.js', 436, 438 ]
-117 silly gunzTarPerm extractEntry config/spec-bundle.js
-118 silly gunzTarPerm modified mode [ 'config/spec-bundle.js', 436, 438 ]
-119 silly gunzTarPerm extractEntry config/webpack.test.js
-120 silly gunzTarPerm modified mode [ 'config/webpack.test.js', 436, 438 ]
-121 silly gunzTarPerm extractEntry .travis.yml
-122 silly gunzTarPerm modified mode [ '.travis.yml', 436, 438 ]
-123 silly gunzTarPerm extractEntry ng2-translate.d.ts
-124 silly gunzTarPerm modified mode [ 'ng2-translate.d.ts', 436, 438 ]
-125 silly gunzTarPerm extractEntry tsconfig.json
-126 silly gunzTarPerm modified mode [ 'tsconfig.json', 436, 438 ]
-127 silly gunzTarPerm extractEntry src/translate.parser.js
-128 silly gunzTarPerm modified mode [ 'src/translate.parser.js', 436, 438 ]
-129 silly gunzTarPerm extractEntry src/translate.pipe.js
-130 silly gunzTarPerm modified mode [ 'src/translate.pipe.js', 436, 438 ]
-131 silly gunzTarPerm extractEntry src/translate.service.js
-132 silly gunzTarPerm modified mode [ 'src/translate.service.js', 436, 438 ]
-133 silly gunzTarPerm extractEntry src/translate.parser.d.ts
-134 silly gunzTarPerm modified mode [ 'src/translate.parser.d.ts', 436, 438 ]
-135 silly gunzTarPerm extractEntry src/translate.pipe.d.ts
-136 silly gunzTarPerm modified mode [ 'src/translate.pipe.d.ts', 436, 438 ]
-137 silly gunzTarPerm extractEntry src/translate.service.d.ts
-138 silly gunzTarPerm modified mode [ 'src/translate.service.d.ts', 436, 438 ]
-139 silly gunzTarPerm extractEntry tslint.json
-140 silly gunzTarPerm modified mode [ 'tslint.json', 436, 438 ]
-141 verbose write writing to C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ng2-translate\package.json
-142 info preinstall ng2-translate@2.5.0
-143 verbose readDependencies loading dependencies from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ng2-translate\package.json
-144 silly prepareForInstallMany adding @angular/core@~2.0.0 from ng2-translate peerDependencies
-145 silly prepareForInstallMany adding @angular/http@~2.0.0 from ng2-translate peerDependencies
-146 warn peerDependencies The peer dependency @angular/core@~2.0.0 included from ng2-translate will no
-147 warn peerDependencies longer be automatically installed to fulfill the peerDependency
-148 warn peerDependencies in npm 3+. Your application will need to depend on it explicitly.
-149 warn peerDependencies The peer dependency @angular/http@~2.0.0 included from ng2-translate will no
-150 warn peerDependencies longer be automatically installed to fulfill the peerDependency
-151 warn peerDependencies in npm 3+. Your application will need to depend on it explicitly.
-152 verbose readDependencies loading dependencies from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ng2-translate\package.json
-153 silly install resolved []
-154 verbose about to build C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ng2-translate
-155 info build C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ng2-translate
-156 info linkStuff ng2-translate@2.5.0
-157 silly linkStuff ng2-translate@2.5.0 has C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules as its parent node_modules
-158 verbose linkBins ng2-translate@2.5.0
-159 verbose linkMans ng2-translate@2.5.0
-160 verbose rebuildBundles ng2-translate@2.5.0
-161 info install ng2-translate@2.5.0
-162 info postinstall ng2-translate@2.5.0
-163 verbose readDependencies loading dependencies from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\package.json
-164 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\del\package.json
-165 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\es6-shim\package.json
-166 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\gulp\package.json
-167 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\gulp-watch\package.json
-168 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionic-angular\package.json
-169 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionic-gulp-browserify-typescript\package.json
-170 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionic-gulp-fonts-copy\package.json
-171 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionic-gulp-html-copy\package.json
-172 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionic-gulp-sass-build\package.json
-173 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionic-gulp-scripts-copy\package.json
-174 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionic-gulp-tslint\package.json
-175 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionic-native\package.json
-176 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ionicons\package.json
-177 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ng2-translate\package.json
-178 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\reflect-metadata\package.json
-179 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\run-sequence\package.json
-180 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\rxjs\package.json
-181 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\tslint-ionic-rules\package.json
-182 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\zone.js\package.json
-183 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\.bin\gulp\package.json
-184 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\.bin\gulp.cmd\package.json
-185 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\@angular\common\package.json
-186 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\@angular\compiler\package.json
-187 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\@angular\core\package.json
-188 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\@angular\forms\package.json
-189 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\@angular\http\package.json
-190 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\@angular\platform-browser\package.json
-191 verbose targetResolver reading package data from C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\@angular\platform-browser-dynamic\package.json
-192 verbose already installed skipping @angular/core@~2.0.0 C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB
-193 verbose already installed skipping @angular/http@~2.0.0 C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB
-194 silly install resolved []
-195 verbose unlock done using C:\Users\ewerton.w.da.silva\AppData\Roaming\npm-cache\_locks\ng2-translate-99809645295cf185.lock for C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\node_modules\ng2-translate
-196 verbose validateInstall loading C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB\package.json for validation
-197 verbose stack Error: The package @angular/core@2.0.0-rc.4 does not satisfy its siblings' peerDependencies requirements!
-197 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\install.js:125:32
-197 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\install.js:268:7
-197 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:142:5
-197 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
-197 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
-197 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
-197 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
-197 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
-197 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
-197 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
-198 verbose cwd C:\Users\ewerton.w.da.silva\OneDrive - Avanade\Estudo\_SWB_\SWB
-199 error Windows_NT 10.0.10586
-200 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "ng2-translate" "--save"
-201 error node v4.4.5
-202 error npm  v2.15.5
-203 error code EPEERINVALID
-204 error peerinvalid The package @angular/core@2.0.0-rc.4 does not satisfy its siblings' peerDependencies requirements!
-204 error peerinvalid Peer @angular/common@2.0.0-rc.4 wants @angular/core@^2.0.0-rc.4
-204 error peerinvalid Peer @angular/compiler@2.0.0-rc.4 wants @angular/core@^2.0.0-rc.4
-204 error peerinvalid Peer @angular/platform-browser@2.0.0-rc.4 wants @angular/core@^2.0.0-rc.4
-204 error peerinvalid Peer @angular/platform-browser-dynamic@2.0.0-rc.4 wants @angular/core@^2.0.0-rc.4
-204 error peerinvalid Peer @angular/http@2.0.0-rc.4 wants @angular/core@^2.0.0-rc.4
-204 error peerinvalid Peer @angular/forms@0.2.0 wants @angular/core@^2.0.0-rc.4
-204 error peerinvalid Peer ionic-angular@2.0.0-beta.11 wants @angular/core@2.0.0-rc.4
-204 error peerinvalid Peer ng2-translate@2.5.0 wants @angular/core@~2.0.0
-205 verbose exit [ 1, true ]
+43 verbose readDependencies loading dependencies from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\package.json
+44 silly cache add args [ 'ng2-translate', null ]
+45 verbose cache add spec ng2-translate
+46 silly cache add parsed spec Result {
+46 silly cache add   raw: 'ng2-translate',
+46 silly cache add   scope: null,
+46 silly cache add   name: 'ng2-translate',
+46 silly cache add   rawSpec: '',
+46 silly cache add   spec: 'latest',
+46 silly cache add   type: 'tag' }
+47 silly addNamed ng2-translate@latest
+48 verbose addNamed "latest" is being treated as a dist-tag for ng2-translate
+49 info addNameTag [ 'ng2-translate', 'latest' ]
+50 silly mapToRegistry name ng2-translate
+51 silly mapToRegistry using default registry
+52 silly mapToRegistry registry https://registry.npmjs.org/
+53 silly mapToRegistry data Result {
+53 silly mapToRegistry   raw: 'ng2-translate',
+53 silly mapToRegistry   scope: null,
+53 silly mapToRegistry   name: 'ng2-translate',
+53 silly mapToRegistry   rawSpec: '',
+53 silly mapToRegistry   spec: 'latest',
+53 silly mapToRegistry   type: 'tag' }
+54 silly mapToRegistry uri https://registry.npmjs.org/ng2-translate
+55 verbose addNameTag registry:https://registry.npmjs.org/ng2-translate not in flight; fetching
+56 verbose request uri https://registry.npmjs.org/ng2-translate
+57 verbose request no auth needed
+58 info attempt registry request try #1 at 9:25:36 PM
+59 verbose request id 1a3bf391dba4bf50
+60 http request GET https://registry.npmjs.org/ng2-translate
+61 http 200 https://registry.npmjs.org/ng2-translate
+62 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+62 verbose headers   etag: '"24J4UBOPA6B7G0ELMZPN41WQU"',
+62 verbose headers   'content-type': 'application/json',
+62 verbose headers   'content-encoding': 'gzip',
+62 verbose headers   'cache-control': 'max-age=300',
+62 verbose headers   'content-length': '17022',
+62 verbose headers   'accept-ranges': 'bytes',
+62 verbose headers   date: 'Fri, 30 Sep 2016 00:25:37 GMT',
+62 verbose headers   via: '1.1 varnish',
+62 verbose headers   age: '0',
+62 verbose headers   connection: 'keep-alive',
+62 verbose headers   'x-served-by': 'cache-iad2620-IAD',
+62 verbose headers   'x-cache': 'MISS',
+62 verbose headers   'x-cache-hits': '0',
+62 verbose headers   'x-timer': 'S1475195137.307514,VS0,VE86',
+62 verbose headers   vary: 'Accept-Encoding' }
+63 silly get cb [ 200,
+63 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+63 silly get     etag: '"24J4UBOPA6B7G0ELMZPN41WQU"',
+63 silly get     'content-type': 'application/json',
+63 silly get     'content-encoding': 'gzip',
+63 silly get     'cache-control': 'max-age=300',
+63 silly get     'content-length': '17022',
+63 silly get     'accept-ranges': 'bytes',
+63 silly get     date: 'Fri, 30 Sep 2016 00:25:37 GMT',
+63 silly get     via: '1.1 varnish',
+63 silly get     age: '0',
+63 silly get     connection: 'keep-alive',
+63 silly get     'x-served-by': 'cache-iad2620-IAD',
+63 silly get     'x-cache': 'MISS',
+63 silly get     'x-cache-hits': '0',
+63 silly get     'x-timer': 'S1475195137.307514,VS0,VE86',
+63 silly get     vary: 'Accept-Encoding' } ]
+64 verbose get saving ng2-translate to C:\Users\Ewerton\AppData\Roaming\npm-cache\registry.npmjs.org\ng2-translate\.cache.json
+65 verbose correctMkdir C:\Users\Ewerton\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+66 silly addNameTag next cb for ng2-translate with tag latest
+67 silly addNamed ng2-translate@2.5.0
+68 verbose addNamed "2.5.0" is a plain semver version for ng2-translate
+69 silly mapToRegistry name ng2-translate
+70 silly mapToRegistry using default registry
+71 silly mapToRegistry registry https://registry.npmjs.org/
+72 silly mapToRegistry data Result {
+72 silly mapToRegistry   raw: 'ng2-translate',
+72 silly mapToRegistry   scope: null,
+72 silly mapToRegistry   name: 'ng2-translate',
+72 silly mapToRegistry   rawSpec: '',
+72 silly mapToRegistry   spec: 'latest',
+72 silly mapToRegistry   type: 'tag' }
+73 silly mapToRegistry uri https://registry.npmjs.org/ng2-translate
+74 verbose addRemoteTarball https://registry.npmjs.org/ng2-translate/-/ng2-translate-2.5.0.tgz not in flight; adding
+75 verbose addRemoteTarball [ 'https://registry.npmjs.org/ng2-translate/-/ng2-translate-2.5.0.tgz',
+75 verbose addRemoteTarball   'c7f3aebcce71ce673e35640f1aabaf7b2940b8ad' ]
+76 info retry fetch attempt 1 at 9:25:38 PM
+77 info attempt registry request try #1 at 9:25:38 PM
+78 http fetch GET https://registry.npmjs.org/ng2-translate/-/ng2-translate-2.5.0.tgz
+79 http fetch 200 https://registry.npmjs.org/ng2-translate/-/ng2-translate-2.5.0.tgz
+80 silly fetchAndShaCheck shasum c7f3aebcce71ce673e35640f1aabaf7b2940b8ad
+81 verbose addTmpTarball C:\Users\Ewerton\AppData\Local\Temp\npm-12216-063cefd7\registry.npmjs.org\ng2-translate\-\ng2-translate-2.5.0.tgz not in flight; adding
+82 verbose addTmpTarball already have metadata; skipping unpack for ng2-translate@2.5.0
+83 verbose correctMkdir C:\Users\Ewerton\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+84 silly cache afterAdd ng2-translate@2.5.0
+85 verbose afterAdd C:\Users\Ewerton\AppData\Roaming\npm-cache\ng2-translate\2.5.0\package\package.json not in flight; writing
+86 verbose correctMkdir C:\Users\Ewerton\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+87 verbose afterAdd C:\Users\Ewerton\AppData\Roaming\npm-cache\ng2-translate\2.5.0\package\package.json written
+88 silly install resolved [ { name: 'ng2-translate',
+88 silly install resolved     description: 'An implementation of angular translate for Angular 2',
+88 silly install resolved     scripts:
+88 silly install resolved      { test: 'tsc && karma start',
+88 silly install resolved        'test-watch': 'tsc && concurrently "tsc -w" "karma start karma.conf.js"',
+88 silly install resolved        commit: 'npm run prepublish && npm test && git-cz',
+88 silly install resolved        prepublish: 'tsc && node make.js',
+88 silly install resolved        'semantic-release': 'semantic-release pre && npm publish && semantic-release post' },
+88 silly install resolved     repository:
+88 silly install resolved      { type: 'git',
+88 silly install resolved        url: 'git+https://github.com/ocombe/ng2-translate.git' },
+88 silly install resolved     keywords: [ 'angular', 'angular2', 'translate', 'i18n' ],
+88 silly install resolved     author: { name: 'Olivier Combe' },
+88 silly install resolved     license: 'MIT',
+88 silly install resolved     bugs: { url: 'https://github.com/ocombe/ng2-translate/issues' },
+88 silly install resolved     main: 'ng2-translate.js',
+88 silly install resolved     typings: './ng2-translate.d.ts',
+88 silly install resolved     homepage: 'https://github.com/ocombe/ng2-translate',
+88 silly install resolved     peerDependencies: { '@angular/core': '~2.0.0', '@angular/http': '~2.0.0' },
+88 silly install resolved     devDependencies:
+88 silly install resolved      { '@angular/common': '2.0.0',
+88 silly install resolved        '@angular/compiler': '2.0.0',
+88 silly install resolved        '@angular/core': '2.0.0',
+88 silly install resolved        '@angular/http': '2.0.0',
+88 silly install resolved        '@angular/platform-browser': '2.0.0',
+88 silly install resolved        '@angular/platform-browser-dynamic': '2.0.0',
+88 silly install resolved        '@types/hammerjs': '2.0.32',
+88 silly install resolved        '@types/jasmine': '2.2.33',
+88 silly install resolved        '@types/node': '6.0.38',
+88 silly install resolved        'awesome-typescript-loader': '2.2.4',
+88 silly install resolved        codelyzer: '0.0.28',
+88 silly install resolved        commitizen: '2.8.6',
+88 silly install resolved        concurrently: '2.2.0',
+88 silly install resolved        'core-js': '2.4.1',
+88 silly install resolved        'cz-conventional-changelog': '1.2.0',
+88 silly install resolved        'istanbul-instrumenter-loader': '0.2.0',
+88 silly install resolved        'jasmine-core': '2.5.1',
+88 silly install resolved        karma: '1.3.0',
+88 silly install resolved        'karma-chrome-launcher': '2.0.0',
+88 silly install resolved        'karma-coverage': '1.1.1',
+88 silly install resolved        'karma-jasmine': '1.0.2',
+88 silly install resolved        'karma-mocha-reporter': '^2.1.0',
+88 silly install resolved        'karma-sourcemap-loader': '^0.3.7',
+88 silly install resolved        'karma-webpack': '^1.8.0',
+88 silly install resolved        'reflect-metadata': '0.1.8',
+88 silly install resolved        rxjs: '5.0.0-beta.12',
+88 silly install resolved        'semantic-release': '4.3.5',
+88 silly install resolved        'source-map-loader': '0.1.5',
+88 silly install resolved        systemjs: '0.19.38',
+88 silly install resolved        'systemjs-builder': '0.15.31',
+88 silly install resolved        'ts-helpers': '1.1.1',
+88 silly install resolved        tslint: '3.15.1',
+88 silly install resolved        'tslint-loader': '2.1.5',
+88 silly install resolved        typescript: '2.0.2',
+88 silly install resolved        webpack: '2.1.0-beta.21',
+88 silly install resolved        'zone.js': '0.6.22' },
+88 silly install resolved     config: { commitizen: [Object] },
+88 silly install resolved     version: '2.5.0',
+88 silly install resolved     gitHead: 'dc47974d80ac71ecd6fc18a2063224301d6b9a95',
+88 silly install resolved     _id: 'ng2-translate@2.5.0',
+88 silly install resolved     _shasum: 'c7f3aebcce71ce673e35640f1aabaf7b2940b8ad',
+88 silly install resolved     _from: 'ng2-translate@latest',
+88 silly install resolved     _npmVersion: '3.10.7',
+88 silly install resolved     _nodeVersion: '5.12.0',
+88 silly install resolved     _npmUser: { name: 'ocombe', email: 'olivier.combe@gmail.com' },
+88 silly install resolved     dist:
+88 silly install resolved      { shasum: 'c7f3aebcce71ce673e35640f1aabaf7b2940b8ad',
+88 silly install resolved        tarball: 'https://registry.npmjs.org/ng2-translate/-/ng2-translate-2.5.0.tgz' },
+88 silly install resolved     maintainers: [ [Object] ],
+88 silly install resolved     _npmOperationalInternal:
+88 silly install resolved      { host: 'packages-12-west.internal.npmjs.com',
+88 silly install resolved        tmp: 'tmp/ng2-translate-2.5.0.tgz_1473919349289_0.6360235307365656' },
+88 silly install resolved     directories: {},
+88 silly install resolved     _resolved: 'https://registry.npmjs.org/ng2-translate/-/ng2-translate-2.5.0.tgz' } ]
+89 info install ng2-translate@2.5.0 into C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget
+90 info installOne ng2-translate@2.5.0
+91 verbose installOne of ng2-translate to C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget not in flight; installing
+92 verbose correctMkdir C:\Users\Ewerton\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+93 verbose lock using C:\Users\Ewerton\AppData\Roaming\npm-cache\_locks\ng2-translate-1166454dcfa0bdf2.lock for C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ng2-translate
+94 silly install write writing ng2-translate 2.5.0 to C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ng2-translate
+95 verbose unbuild node_modules\ng2-translate
+96 silly gentlyRm C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ng2-translate is being purged from base C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget
+97 verbose gentlyRm don't care about contents; nuking C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ng2-translate
+98 verbose tar unpack C:\Users\Ewerton\AppData\Roaming\npm-cache\ng2-translate\2.5.0\package.tgz
+99 verbose tar unpacking to C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ng2-translate
+100 silly gentlyRm C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ng2-translate is being purged
+101 verbose gentlyRm don't care about contents; nuking C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ng2-translate
+102 silly gunzTarPerm modes [ '777', '666' ]
+103 silly gunzTarPerm extractEntry package.json
+104 silly gunzTarPerm modified mode [ 'package.json', 436, 438 ]
+105 silly gunzTarPerm extractEntry .npmignore
+106 silly gunzTarPerm modified mode [ '.npmignore', 436, 438 ]
+107 silly gunzTarPerm extractEntry README.md
+108 silly gunzTarPerm modified mode [ 'README.md', 436, 438 ]
+109 silly gunzTarPerm extractEntry LICENSE
+110 silly gunzTarPerm modified mode [ 'LICENSE', 436, 438 ]
+111 silly gunzTarPerm extractEntry karma.conf.js
+112 silly gunzTarPerm modified mode [ 'karma.conf.js', 436, 438 ]
+113 silly gunzTarPerm extractEntry make.js
+114 silly gunzTarPerm modified mode [ 'make.js', 436, 438 ]
+115 silly gunzTarPerm extractEntry ng2-translate.js
+116 silly gunzTarPerm modified mode [ 'ng2-translate.js', 436, 438 ]
+117 silly gunzTarPerm extractEntry bundles/ng2-translate.js
+118 silly gunzTarPerm modified mode [ 'bundles/ng2-translate.js', 436, 438 ]
+119 silly gunzTarPerm extractEntry config/helpers.js
+120 silly gunzTarPerm modified mode [ 'config/helpers.js', 436, 438 ]
+121 silly gunzTarPerm extractEntry config/karma.conf.js
+122 silly gunzTarPerm modified mode [ 'config/karma.conf.js', 436, 438 ]
+123 silly gunzTarPerm extractEntry config/spec-bundle.js
+124 silly gunzTarPerm modified mode [ 'config/spec-bundle.js', 436, 438 ]
+125 silly gunzTarPerm extractEntry config/webpack.test.js
+126 silly gunzTarPerm modified mode [ 'config/webpack.test.js', 436, 438 ]
+127 silly gunzTarPerm extractEntry .travis.yml
+128 silly gunzTarPerm modified mode [ '.travis.yml', 436, 438 ]
+129 silly gunzTarPerm extractEntry ng2-translate.d.ts
+130 silly gunzTarPerm modified mode [ 'ng2-translate.d.ts', 436, 438 ]
+131 silly gunzTarPerm extractEntry tsconfig.json
+132 silly gunzTarPerm modified mode [ 'tsconfig.json', 436, 438 ]
+133 silly gunzTarPerm extractEntry src/translate.parser.js
+134 silly gunzTarPerm modified mode [ 'src/translate.parser.js', 436, 438 ]
+135 silly gunzTarPerm extractEntry src/translate.pipe.js
+136 silly gunzTarPerm modified mode [ 'src/translate.pipe.js', 436, 438 ]
+137 silly gunzTarPerm extractEntry src/translate.service.js
+138 silly gunzTarPerm modified mode [ 'src/translate.service.js', 436, 438 ]
+139 silly gunzTarPerm extractEntry src/translate.parser.d.ts
+140 silly gunzTarPerm modified mode [ 'src/translate.parser.d.ts', 436, 438 ]
+141 silly gunzTarPerm extractEntry src/translate.pipe.d.ts
+142 silly gunzTarPerm modified mode [ 'src/translate.pipe.d.ts', 436, 438 ]
+143 silly gunzTarPerm extractEntry src/translate.service.d.ts
+144 silly gunzTarPerm modified mode [ 'src/translate.service.d.ts', 436, 438 ]
+145 silly gunzTarPerm extractEntry tslint.json
+146 silly gunzTarPerm modified mode [ 'tslint.json', 436, 438 ]
+147 verbose write writing to C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ng2-translate\package.json
+148 info preinstall ng2-translate@2.5.0
+149 verbose readDependencies loading dependencies from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ng2-translate\package.json
+150 silly prepareForInstallMany adding @angular/core@~2.0.0 from ng2-translate peerDependencies
+151 silly prepareForInstallMany adding @angular/http@~2.0.0 from ng2-translate peerDependencies
+152 warn peerDependencies The peer dependency @angular/core@~2.0.0 included from ng2-translate will no
+153 warn peerDependencies longer be automatically installed to fulfill the peerDependency
+154 warn peerDependencies in npm 3+. Your application will need to depend on it explicitly.
+155 warn peerDependencies The peer dependency @angular/http@~2.0.0 included from ng2-translate will no
+156 warn peerDependencies longer be automatically installed to fulfill the peerDependency
+157 warn peerDependencies in npm 3+. Your application will need to depend on it explicitly.
+158 verbose readDependencies loading dependencies from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ng2-translate\package.json
+159 silly install resolved []
+160 verbose about to build C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ng2-translate
+161 info build C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ng2-translate
+162 info linkStuff ng2-translate@2.5.0
+163 silly linkStuff ng2-translate@2.5.0 has C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules as its parent node_modules
+164 verbose linkBins ng2-translate@2.5.0
+165 verbose linkMans ng2-translate@2.5.0
+166 verbose rebuildBundles ng2-translate@2.5.0
+167 info install ng2-translate@2.5.0
+168 info postinstall ng2-translate@2.5.0
+169 verbose readDependencies loading dependencies from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\package.json
+170 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\del\package.json
+171 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\es6-shim\package.json
+172 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\gulp\package.json
+173 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\gulp-watch\package.json
+174 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionic-angular\package.json
+175 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionic-gulp-browserify-typescript\package.json
+176 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionic-gulp-fonts-copy\package.json
+177 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionic-gulp-html-copy\package.json
+178 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionic-gulp-sass-build\package.json
+179 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionic-gulp-scripts-copy\package.json
+180 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionic-gulp-tslint\package.json
+181 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionic-native\package.json
+182 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ionicons\package.json
+183 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ng2-translate\package.json
+184 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\reflect-metadata\package.json
+185 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\run-sequence\package.json
+186 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\rxjs\package.json
+187 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\tslint-ionic-rules\package.json
+188 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\zone.js\package.json
+189 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\@angular\common\package.json
+190 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\@angular\compiler\package.json
+191 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\@angular\core\package.json
+192 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\@angular\forms\package.json
+193 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\@angular\http\package.json
+194 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\@angular\platform-browser\package.json
+195 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\@angular\platform-browser-dynamic\package.json
+196 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\.bin\gulp\package.json
+197 verbose targetResolver reading package data from C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\.bin\gulp.cmd\package.json
+198 verbose already installed skipping @angular/http@~2.0.0 C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget
+199 verbose already installed skipping @angular/core@~2.0.0 C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget
+200 silly install resolved []
+201 verbose unlock done using C:\Users\Ewerton\AppData\Roaming\npm-cache\_locks\ng2-translate-1166454dcfa0bdf2.lock for C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\node_modules\ng2-translate
+202 verbose validateInstall loading C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget\package.json for validation
+203 verbose stack Error: The package @angular/core@2.0.0-rc.4 does not satisfy its siblings' peerDependencies requirements!
+203 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\install.js:125:32
+203 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\install.js:268:7
+203 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:142:5
+203 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+203 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+203 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+203 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+203 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+203 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+203 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+204 verbose cwd C:\Users\Ewerton\Documents\TCC\SmartWeeklyBudget
+205 error Windows_NT 10.0.10586
+206 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "ng2-translate" "--save"
+207 error node v4.5.0
+208 error npm  v2.15.9
+209 error code EPEERINVALID
+210 error peerinvalid The package @angular/core@2.0.0-rc.4 does not satisfy its siblings' peerDependencies requirements!
+210 error peerinvalid Peer @angular/common@2.0.0-rc.4 wants @angular/core@^2.0.0-rc.4
+210 error peerinvalid Peer @angular/compiler@2.0.0-rc.4 wants @angular/core@^2.0.0-rc.4
+210 error peerinvalid Peer @angular/platform-browser@2.0.0-rc.4 wants @angular/core@^2.0.0-rc.4
+210 error peerinvalid Peer @angular/platform-browser-dynamic@2.0.0-rc.4 wants @angular/core@^2.0.0-rc.4
+210 error peerinvalid Peer @angular/http@2.0.0-rc.4 wants @angular/core@^2.0.0-rc.4
+210 error peerinvalid Peer @angular/forms@0.2.0 wants @angular/core@^2.0.0-rc.4
+210 error peerinvalid Peer ionic-angular@2.0.0-beta.11 wants @angular/core@2.0.0-rc.4
+210 error peerinvalid Peer ng2-translate@2.5.0 wants @angular/core@~2.0.0
+211 verbose exit [ 1, true ]
