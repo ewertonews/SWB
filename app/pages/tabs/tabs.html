@@ -1,5 +1,5 @@
-<ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Contas" tabIcon="clipboard"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="My Budget" tabIcon="cash"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="archive"></ion-tab>
+<ion-tabs light-blue [selectedIndex]="1">
+  <ion-tab [root]="tab1Root" tabTitle="{{'Strings.my_bills' | translate}}" tabIcon="clipboard" dark-blue></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="{{'Strings.weekly_budget' | translate}}" tabIcon="cash" dark-blue></ion-tab> 
+  <ion-tab [root]="tab3Root" tabTitle="{{'Strings.my_savings' | translate}}" tabIcon="archive" dark-blue></ion-tab>
 </ion-tabs>

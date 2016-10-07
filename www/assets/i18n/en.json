@@ -1,0 +1,11 @@
+{
+    "Strings" : {
+        "app_title" : "SWB - Smart Weekly Budget",
+        "weekly_budget" : "Weekly Buget",
+        "my_bills" : "My Bills",
+        "my_savings" : "My Savings",
+        "app_currency" : "$",
+        "curr_balance" : "Balance",
+        "update_balance": "Update balance"
+    }
+}

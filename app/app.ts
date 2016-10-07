@@ -1,3 +1,6 @@
+import {provide} from '@angular/core';
+import {Http, HTTP_PROVIDERS} from '@angular/http';
+import {TranslateService, TranslatePipe, TranslateLoader, TranslateStaticLoader} from 'ng2-translate/ng2-translate';
 import {Component, ViewChild} from '@angular/core';
 import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
@@ -18,7 +21,8 @@ class MyApp {
 
   constructor(
     public platform: Platform,
-    public menu: MenuController
+    public menu: MenuController,
+    private  translate: TranslateService
   ) {
     this.initializeApp();
 
@@ -28,6 +32,7 @@ class MyApp {
       { title: 'Hello Ionic', component: HelloIonicPage },
       { title: 'List', component: ListPage }
     ];
+    this.translateConfig();
   }
 
   initializeApp() {
@@ -44,6 +49,25 @@ class MyApp {
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
   }
+
+  translateConfig() {
+    var userLang = navigator.language.split('-')[0]; // use navigator lang if available
+    userLang = /(pt|en)/gi.test(userLang) ? userLang : 'pt';
+ 
+    // this language will be used as a fallback when a translation isn't found in the current language
+    this.translate.setDefaultLang('pt');
+ 
+    // the lang to use, if the lang isn't available, it will use the current loader to get them
+    this.translate.use(userLang);
+  }
 }
 
-ionicBootstrap(MyApp);
+
+ionicBootstrap(MyApp, [[provide(TranslateLoader, {
+  useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
+  deps: [Http]
+}),
+  TranslateService]], {tabsPlacement: 'top'}
+);
+
+

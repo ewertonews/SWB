@@ -1,12 +1,16 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar dark-blue>
     <button menuToggle *ngIf="!selectedItem">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Contas</ion-title>
+    <ion-title>{{ "Strings.my_bills" | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="about">
   <h2>This is the Bills page</h2>
+
+<button fab fab-bottom fab-right orange (click)="addBill()">
+    <ion-icon name="add"></ion-icon>
+</button>
 </ion-content>

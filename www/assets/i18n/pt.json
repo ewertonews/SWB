@@ -1,0 +1,11 @@
+{
+    "Strings" : {
+        "app_title" : "OSI - Orçamento Semanal Inteligente",
+        "weekly_budget" : "Orçamento Semanal",
+        "my_bills" : "Minhas Contas",
+        "my_savings" : "Minhas Economias",
+        "app_currency" : "R$",
+        "curr_balance" : "Saldo",
+        "update_balance": "Atualizar saldo"
+    }
+}
