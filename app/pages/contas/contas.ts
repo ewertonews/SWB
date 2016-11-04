@@ -48,13 +48,6 @@ export class ContasPage {
              }             
           });
 
-      // this.budgetData.get('billList').then((savedBills) =>{
-      //   console.log("fez a consulta de bills");
-      //   if (this.init > 0 && savedBills !== undefined){
-      //     this.ListaDeContas = JSON.parse(savedBills)
-      //   }
-      //   console.log("retrieved bills : "+ savedBills);               
-      // });
   }
 
 
@@ -82,11 +75,17 @@ export class ContasPage {
     let index = this.ListaDeContas.indexOf(bill);
     this.ListaDeContas[index].bill_isPaid = ischecked;
     if (this.ListaDeContas[index].bill_isPaid){
-      this.budget.balance = parseFloat(this.budget.balance) - parseFloat(bill.bill_amount);
-      this.budgetData.set('userBudget', JSON.stringify(this.budget));
+      this.budgetData.get('userBudget').then((savedBudget) =>{
+        this.budget = JSON.parse(savedBudget);
+        this.budget.balance = (parseFloat(this.budget.balance) - parseFloat(bill.bill_amount)).toFixed(2);
+        this.budgetData.set('userBudget', JSON.stringify(this.budget));
+      });
     }else{
-      this.budget.balance = (parseFloat(this.budget.balance) + parseFloat(bill.bill_amount)).toFixed(2);
-      this.budgetData.set('userBudget', JSON.stringify(this.budget));
+      this.budgetData.get('userBudget').then((savedBudget) =>{
+        this.budget = JSON.parse(savedBudget);
+        this.budget.balance = (parseFloat(this.budget.balance) + parseFloat(bill.bill_amount)).toFixed(2);
+        this.budgetData.set('userBudget', JSON.stringify(this.budget));
+      });      
     }
     this.budgetData.set('billList', JSON.stringify(this.ListaDeContas));
     console.log(this.budget); 

@@ -129,58 +129,36 @@ export class BudgetService {
             let budget = new Array<{dias: Array<number>, amount: number, month: number, initWeekAmount: number}>();;
 
             let weekNbudget: number = 0;
-            let weekBudget: [String, number];
+            let weekBudget: [String, String];
 
             //24
             let currentDate: Date = today;
 
             //lastDayOfMonth = 31
-            while (today.getDate() != lastBussnessDayOfMonth.getDate())
+            while (currentDate.getDate() != lastBussnessDayOfMonth.getDate())
             {
+                let budgetOfWeek = 0;
                 let daysOfweekN: Array<number> = new Array<number>();
-                do
-                {
-                    daysOfweekN.push(today.getDate());
-                    weekNbudget = Number((weekNbudget + amountPerDay).toFixed(2));
-                    if (today.getDay() != cycleEnds)
-                    {
-                        today = this.addDays(today, 1);
-                    }
-
-                } while (today.getDay() != cycleEnds && today.getDate() != lastBussnessDayOfMonth.getDate());
-
-                daysOfweekN.push(today.getDate());
-
-                if (today.getDay() == cycleEnds)
-                {
-                    weekNbudget = Number((weekNbudget + amountPerDay).toFixed(2));
-                    if (currentDate.getDate() == today.getDate())
-                    {
-                        weekBudget = [String(today.getDate()) + "/" + + String(today.getMonth() + 1), Number(amountPerDay.toFixed(2))];
-                    }
-                    else
-                    {
-                        weekBudget =  [daysOfweekN[0] + " - " + String(today.getDate()) + "/" + String(today.getMonth() + 1), Number(weekNbudget.toFixed(2))];                       
-                    }
-
-                    budget.push({dias: daysOfweekN, amount: Number(weekNbudget.toFixed(2)), month: today.getMonth() + 1, initWeekAmount: Number(weekNbudget.toFixed(2))});
-                    weekNbudget = 0;
-                    today = this.addDays(today, 1);
+                
+                do{
+                    daysOfweekN.push(currentDate.getDate());
+                    currentDate = this.addDays(currentDate, 1);
+                } while (currentDate.getDay() <= cycleEnds && currentDate.getDate() != lastBussnessDayOfMonth.getDate())
+                
+                if (currentDate.getDate() == lastBussnessDayOfMonth.getDate()){
+                    daysOfweekN.push(currentDate.getDate());
                 }
-                else
-                {
-                    weekNbudget = Number((weekNbudget + amountPerDay).toFixed(2));
-                    weekBudget = [daysOfweekN[0] + " - " + String(today.getDate()) + "/" + String(today.getMonth() + 1), Number(weekNbudget.toFixed(2))];
-                    budget.push({dias: daysOfweekN, amount: Number(weekNbudget.toFixed(2)), month: today.getMonth() + 1, initWeekAmount: Number(weekNbudget.toFixed(2))});
-                }
-               //budget.push(weekBudget);
+
+                budgetOfWeek =  parseFloat(String(daysOfweekN.length * amountPerDay));
+                
+                budget.push({dias: daysOfweekN, amount: budgetOfWeek, month: today.getMonth() + 1, initWeekAmount: budgetOfWeek});         
 
             }
 
             console.log("Budget local que vai ser setado no userBudget.weekBudget: "+budget);
             
             this.userBudget.weeklyBudget = budget;
-            this.userBudget.balance = saldo;
+            this.userBudget.balance = parseFloat(saldo.toString());
             this.budgetData.set('userBudget', JSON.stringify(this.userBudget));
             
             this.budgetData.get('userBudget').then((res) => {
@@ -188,24 +166,6 @@ export class BudgetService {
             })
             return this.userBudget
         }
-
-        // getBudgetObject() {
-        //     let budget: string;
-        //     this.budgetData.get('userBudget').then((res) => {
-                
-        //         // if (res === undefined){
-        //         //     console.log("entrou no if")
-        //         //     return null;
-        //         // }
-        //         budget = res;
-        //         console.log("_-_-_->"+JSON.stringify(budget));
-        //     })
-        //     return budget;
-        // }
-
-        // persistBudget(budgetOject){
-        //      this.budgetData.set('userBudget', budgetOject);
-        // }
 
    
 }

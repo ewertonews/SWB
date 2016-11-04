@@ -29,15 +29,8 @@
     <ion-toggle #paid (ionChange)="setPaid(paid.checked, bill)" checked="{{bill.bill_isPaid}}"></ion-toggle><ion-label  class="billpaid">Pago?</ion-label>
   </ion-item>
   <ion-item-sliding class="billitem">    
-    <ion-item #item>       
-      <!--<ion-row>
-        <ion-col width-75>
-          {{ bill.bill_title }}<br>        
-        </ion-col>      
-        <ion-col>        
-          
-        </ion-col>    
-      </ion-row>       -->
+    <ion-item #item>     
+
       <h1>{{"Strings.app_currency" | translate}} <span (click)="editBalance()">{{ bill.bill_amount }}</span></h1>
     </ion-item>  
     <ion-item-options side="right">
@@ -46,7 +39,7 @@
   </ion-item-sliding>  
 </ion-list>
 
-<button fab fab-bottom fab-right orange (click)="addBill()">
+</ion-content>
+<button fab fab-bottom fab-right orange style="z-index:200" (click)="addBill()">
     <ion-icon name="add"></ion-icon>
 </button>
-</ion-content>

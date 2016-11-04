@@ -1,13 +1,14 @@
 import {provide} from '@angular/core';
 import {Http, HTTP_PROVIDERS} from '@angular/http';
 import {TranslateService, TranslatePipe, TranslateLoader, TranslateStaticLoader} from 'ng2-translate/ng2-translate';
-import {Component, ViewChild} from '@angular/core';
+import {Component, ViewChild, enableProdMode} from '@angular/core';
 import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {ConfiguracoesPage} from './pages/configuracoes/configuracoes';
 import {TabsPage} from './pages/tabs/tabs';
 import {ListPage} from './pages/list/list';
 
+enableProdMode();
 
 @Component({
   templateUrl: 'build/app.html',  
@@ -25,6 +26,8 @@ class MyApp {
     private  translate: TranslateService
     
   ) {
+
+    
     this.initializeApp();
 
     // set our app's pages
@@ -38,6 +41,7 @@ class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
+      
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();

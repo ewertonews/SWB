@@ -1,12 +1,26 @@
 {
     "Strings" : {
         "app_title" : "OSI - Orçamento Semanal Inteligente",
-        "weekly_budget" : "Orçamento Semanal",
+        "weekly_budget" : "Orçamento \n\rSemanal",
         "my_bills" : "Minhas Contas",
         "my_savings" : "Minhas Economias",
         "app_currency" : "R$",
         "curr_balance" : "Saldo",
         "update_balance": "Atualizar saldo",        
-        "msg_updt_balance" : "Toque para editar"
-    }
+        "msg_updt_balance" : "Toque para editar",
+        "Months" : {
+            "0" : "Janeiro",
+            "1" : "Fevereiro",
+            "2" : "Março",
+            "3" : "Abril",
+            "4" : "Maio",
+            "5" : "Junho",
+            "6" : "Julho",
+            "7" : "Agosto",
+            "8" : "Setembro",
+            "9" : "Outubro",
+            "10" : "Novembro",
+            "11" : "Dezembro"
+        }     
+    }    
 }

@@ -15,16 +15,17 @@ export class OrcamentoPage {
   budget;
   budgetData;
   init = 0;
-  
+  currMonth;  
 
   constructor(public navCtrl: NavController, public alerCtrl: AlertController, public _budgetService: BudgetService) {
+    this.currMonth = (new Date().getMonth()).toString(); 
     this.budgetData = new Storage(SqlStorage, {name: 'SmartWeeklyBudgetDB'});    
     
     this.budgetData.get('userBudget').then((budget) =>{
         console.log("budget salvo no db: "+JSON.stringify(budget))
         this.budget =JSON.parse(budget);
     })    
-     console.log(this.budget)
+     console.log(this.currMonth)
     if (this.budget == null || this.budget === undefined){
       console.log("entrou no if")
       this.budget = new BudgetModel();
