@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { OrcamentoPage } from '../orcamento/orcamento';
 import { ContasPage } from '../contas/contas';
 import { EconomiastPage } from '../economias/economias';
-import {TranslatePipe} from "ng2-translate/ng2-translate";
+import { TranslatePipe } from "ng2-translate/ng2-translate";
 
 @Page({
   templateUrl: 'build/pages/tabs/tabs.html',

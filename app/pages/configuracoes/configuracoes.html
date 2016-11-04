@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar blue>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Settings**</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="getting-started">
+ <!--<ion-label>Select the day to be the end of the week cycle:</ion-label>
+ <ion-select [(ngModel)]="selectedvalue">
+    <ion-option value="0" selected="true">Sunday**</ion-option>
+    <ion-option value="1" checked=false>Monday**</ion-option>
+    <ion-option value="2" checked=false>Tuesday**</ion-option>
+    <ion-option value="3" checked=false>Wedday**</ion-option>
+    <ion-option value="4" checked=false>Thursday**</ion-option>
+ </ion-select>-->
+ <ion-list>
+  <ion-item>
+    <ion-label>Weekly cycle ends on:</ion-label>
+    <ion-select [(ngModel)]="cycleEndsDay">
+      <ion-option value="0" checked="true">Sunday**</ion-option>
+      <ion-option value="1">Monday**</ion-option>
+      <ion-option value="2">Tuesday**</ion-option>
+      <ion-option value="3">Wednesday**</ion-option>
+      <ion-option value="4">Thursday**</ion-option>
+      <ion-option value="5">Friday**</ion-option>
+      <ion-option value="6">Saturday**</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Calculate budget until:</ion-label>
+    <ion-select [(ngModel)]="budgetEndsOption">
+      <ion-option value="0" checked="true">Last day of month**</ion-option>
+      <ion-option value="1">last business day of month**</ion-option>
+      <ion-option value="2">Specific date**</ion-option>      
+    </ion-select>
+  </ion-item>
+  <ion-item *ngIf="budgetEndsOption == 2">
+    <ion-label>Select the date**</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="budgetEndsDate"></ion-datetime>
+  </ion-item>
+</ion-list>
+<button ion-button primary (click)="saveSettings()">Save**</button>
+</ion-content>

@@ -4,13 +4,13 @@ import {TranslateService, TranslatePipe, TranslateLoader, TranslateStaticLoader}
 import {Component, ViewChild} from '@angular/core';
 import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
-import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
+import {ConfiguracoesPage} from './pages/configuracoes/configuracoes';
 import {TabsPage} from './pages/tabs/tabs';
 import {ListPage} from './pages/list/list';
 
 
 @Component({
-  templateUrl: 'build/app.html'
+  templateUrl: 'build/app.html',  
 })
 class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -18,18 +18,19 @@ class MyApp {
   // make HelloIonicPage the root (or first) page
   rootPage: any = TabsPage;
   pages: Array<{title: string, component: any}>;
-
+ 
   constructor(
     public platform: Platform,
     public menu: MenuController,
     private  translate: TranslateService
+    
   ) {
     this.initializeApp();
 
     // set our app's pages
     this.pages = [
       { title: 'Home', component: TabsPage },
-      { title: 'Hello Ionic', component: HelloIonicPage },
+      { title: 'Settings**', component: ConfiguracoesPage },
       { title: 'List', component: ListPage }
     ];
     this.translateConfig();
@@ -67,7 +68,7 @@ ionicBootstrap(MyApp, [[provide(TranslateLoader, {
   useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
   deps: [Http]
 }),
-  TranslateService]], {tabsPlacement: 'top'}
+  TranslateService]], {tabsPlacement: 'top', tabsHighlight: 'true'} 
 );
 
 

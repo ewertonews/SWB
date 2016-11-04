@@ -15,28 +15,45 @@
    
   </ion-item>  -->
 
-<ion-grid>
-  <ion-row>
-    {{"Strings.curr_balance" | translate}}
-  </ion-row>
-  <ion-row>
-    <ion-col width-75>      
-      <h3><span>{{"Strings.app_currency" | translate}} </span><span (click)="editBalance()">{{curr_balance}}</span></h3>
-    </ion-col>
-    <ion-col width-25>
-      <h5>Agosto</h5>
-    </ion-col>
-  </ion-row>
-</ion-grid>
-<ion-list>
-  <ion-item>
-    10 - 17/09
-    <progress max="1000" value="{{curr_balance}}"></progress>  
-  </ion-item>  
-</ion-list>
+<ion-card>
+  <ion-card-header>
+    <ion-row class="card-ballance-header">
+      <ion-col width-80>
+        {{"Strings.curr_balance" | translate}}<br>
+        <p class="balance-instruction">{{"Strings.msg_updt_balance" | translate}}</p>
+      </ion-col>      
+      <ion-col>October</ion-col>    
+    </ion-row>      
+  </ion-card-header>
+  <ion-card-content (click)="editBalance()">      
+      <h1>{{"Strings.app_currency" | translate}} <span>{{budget.balance}}</span></h1>  
+  </ion-card-content>
+</ion-card>
 
-  <button fab fab-bottom fab-right orange (click)="spend()">
-    <ion-icon name="remove"></ion-icon>
+<ion-card>
+  <ion-card-content>
+    <ion-card *ngFor="let weekbudget of budget.weeklyBudget" class="card-week">
+      <ion-card-header>
+        <ion-row class="card-week-header">
+          <ion-col width-70>
+            {{weekbudget.dias[0]}} - {{weekbudget.dias[weekbudget.dias.length - 1]}}/{{weekbudget.month}}
+          </ion-col>      
+          <ion-col>{{"Strings.app_currency" | translate}} {{weekbudget.amount}} | {{weekbudget.initWeekAmount}}</ion-col>    
+        </ion-row>  
+      </ion-card-header>
+      <ion-card-content style="padding-botton:-2vh">
+        <ion-row>          
+          <progress max="{{weekbudget.initWeekAmount}}" value="{{weekbudget.amount}}"></progress>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ion-card-content>
+</ion-card>
+  <!--<button fab fab-bottom fab-right orange >
     
-  </button>
+    Gastar
+  </button>-->
 </ion-content>
+<ion-fab right bottom orange style="z-index:200">
+  <button ion-fab fab fab-bottom orange fab-right style="z-index:200" (click)="spend()">Gastar</button>
+</ion-fab>

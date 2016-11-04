@@ -4,7 +4,40 @@
 
 progress {
   //width: 250px;
-  height: 4vh;
-  float: right;
+  height: 2.57vh;
+  width: 100%;
+}
+
+.card-ballance-header{
+  //background-color: green;
+  margin-top: -2vh;  
+  height: 4.5vh;
+}
+
+
+
+.card-week-header{
+  //background-color: green;
+  margin-top: -2vh;
+  margin-bottom: -1.5vh;
+  height: 4.5vh;
+}
+
+.balance-instruction{
+  color: lightslategrey;
+  font-size: 0.7em;
+   
+}
+
+.card-week{
+  //background-color: orangered;
+  width: 105%;
+  margin-left: -2vw;
+}
+
+.gastar{
+ font-size: 0.8em; 
+ height: 8vh;
+ width: 11.5vw;
 }
 

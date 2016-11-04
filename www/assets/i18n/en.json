@@ -6,6 +6,7 @@
         "my_savings" : "My Savings",
         "app_currency" : "$",
         "curr_balance" : "Balance",
-        "update_balance": "Update balance"
+        "update_balance": "Update balance",
+         "msg_updt_balance" : "Touch to edit"
     }
 }

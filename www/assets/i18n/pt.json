@@ -6,6 +6,7 @@
         "my_savings" : "Minhas Economias",
         "app_currency" : "R$",
         "curr_balance" : "Saldo",
-        "update_balance": "Atualizar saldo"
+        "update_balance": "Atualizar saldo",        
+        "msg_updt_balance" : "Toque para editar"
     }
 }

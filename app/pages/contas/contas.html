@@ -8,7 +8,43 @@
 </ion-header>
 
 <ion-content padding class="about">
-  <h2>This is the Bills page</h2>
+
+<ion-card>
+  <ion-card-header>
+    <ion-row>
+      Bills Total
+    </ion-row>  
+  </ion-card-header>
+  <ion-card-content>      
+      <h1>{{"Strings.app_currency" | translate}} <span>{{ getBillsTotal() }}</span></h1>  
+  </ion-card-content>
+</ion-card>
+
+<!--<label for="is-paid">Pago?</label>
+          <input class="paidCkb" type="checkbox" #paid (change)="setPaid(paid.checked, bill)" name="is-paid"/>         -->
+          <!--<ion-item><ion-toggle #paid (ionChange)="setPaid(paid.checked, bill)" checked="{{bill.bill_isPaid}}"></ion-toggle></ion-item>-->
+<ion-list *ngFor="let bill of ListaDeContas">
+  <ion-item>
+     <ion-label>{{ bill.bill_title }}</ion-label>
+    <ion-toggle #paid (ionChange)="setPaid(paid.checked, bill)" checked="{{bill.bill_isPaid}}"></ion-toggle><ion-label  class="billpaid">Pago?</ion-label>
+  </ion-item>
+  <ion-item-sliding class="billitem">    
+    <ion-item #item>       
+      <!--<ion-row>
+        <ion-col width-75>
+          {{ bill.bill_title }}<br>        
+        </ion-col>      
+        <ion-col>        
+          
+        </ion-col>    
+      </ion-row>       -->
+      <h1>{{"Strings.app_currency" | translate}} <span (click)="editBalance()">{{ bill.bill_amount }}</span></h1>
+    </ion-item>  
+    <ion-item-options side="right">
+      <button ion-button (click)="removeBill(bill)">Delete<ion-icon name="trash"></ion-icon></button>
+    </ion-item-options>
+  </ion-item-sliding>  
+</ion-list>
 
 <button fab fab-bottom fab-right orange (click)="addBill()">
     <ion-icon name="add"></ion-icon>
