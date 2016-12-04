@@ -7,6 +7,7 @@ import {StatusBar} from 'ionic-native';
 import {ConfiguracoesPage} from './pages/configuracoes/configuracoes';
 import {TabsPage} from './pages/tabs/tabs';
 import {ListPage} from './pages/list/list';
+import {ExpensesLogsPage} from './pages/expenses-logs/expenses-logs';
 
 enableProdMode();
 
@@ -51,7 +52,8 @@ class MyApp {
     this.pages = [
       { title: 'Home', component: TabsPage },
       { title: settingsTitle, component: ConfiguracoesPage },
-      { title: 'List', component: ListPage }
+      { title: 'List', component: ListPage },
+      { title: 'Expenses log', component: ExpensesLogsPage }
     ];
     this.translateConfig();
   }

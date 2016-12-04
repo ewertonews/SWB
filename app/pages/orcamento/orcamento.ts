@@ -16,11 +16,13 @@ export class OrcamentoPage {
   budgetData;
   init = 0;
   currMonth;  
+  expensesRecord : Array<{value: number, dateTime: string, long: string, lat: string}>;
 
   constructor(public navCtrl: NavController, public alerCtrl: AlertController, public _budgetService: BudgetService) {
     this.currMonth = (new Date().getMonth()).toString(); 
     this.budgetData = new Storage(SqlStorage, {name: 'SmartWeeklyBudgetDB'});    
-    
+    this.expensesRecord = new Array<{value: number, dateTime: string, long: string, lat: string}>();
+
     this.budgetData.get('userBudget').then((budget) =>{
         console.log("budget salvo no db: "+JSON.stringify(budget))
         this.budget =JSON.parse(budget);
@@ -35,6 +37,13 @@ export class OrcamentoPage {
     if(this.budget.balance == "0"){
       this.budget.weeklyBudget = [];
     }
+
+     this.budgetData.get('expenses').then((expense) =>{
+       if(expense){
+         this.expensesRecord = JSON.parse(expense);
+       }
+     });
+
     
   }
   ionViewDidEnter(){   
@@ -135,6 +144,14 @@ export class OrcamentoPage {
             
             this.budgetData.set('userBudget', JSON.stringify(this.budget));
            
+            this.expensesRecord.push({value: parseFloat(data.Amount), dateTime: today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear() + " " + today.getHours() +":"+ today.getMinutes(), long: "", lat: ""});
+
+            
+
+            this.budgetData.set('expenses', JSON.stringify(this.expensesRecord));
+
+            console.log(this.expensesRecord);
+
             console.log("=================>"+JSON.stringify(this.budget));
           }
         }
