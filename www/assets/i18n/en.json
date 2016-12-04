@@ -21,6 +21,21 @@
             "9" : "October",
             "10" : "November",
             "11" : "December"
+        },
+        "cycle-ends-option" : "Weekly cycle goes until:",
+        "budget-ends-option" : "Calculate budget until:",
+        "last-day-month" : "Last day of month",
+        "last-business-day": "Last business day of month",
+        "specific-date" : "Specific date",      
+        "choose-date" : "Choose the date",      
+        "Days" : {
+            "sun" : "Sunday",
+            "mon" : "Monday",
+            "tue" : "Tuesday",
+            "wed" : "Wednesday",
+            "thu" : "Thursday",
+            "fri" : "Friday",
+            "sat" : "Saturday"
         }
     }
 }

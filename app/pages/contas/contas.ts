@@ -92,6 +92,8 @@ export class ContasPage {
   }
 
   addBill(){    
+    
+
     let prompt = this.alerCtrl.create({
       title: 'Add a bill',
       message: "Enter the name and value of the bill",

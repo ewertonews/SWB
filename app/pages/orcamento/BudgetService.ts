@@ -7,12 +7,15 @@ export class BudgetService {
     
     userBudget: BudgetModel;
     budgetData;
+    budgetSettings;
 
     constructor() {
         this.userBudget = new BudgetModel();
         this.budgetData = new Storage(SqlStorage, {name: 'SmartWeeklyBudgetDB'});
+        this.budgetData.get('settingsInfo').then((budgetSettings) => {
+            this.budgetSettings = JSON.parse(budgetSettings);
+        });
     }
-
     
 
     private getDayOfWeek(dayNumber: number): string{
@@ -70,16 +73,24 @@ export class BudgetService {
         return dateOfCycleEndsDay;
     }
                                     //string that represents a date ("23/10/2016")
-    private getLastBussnessDayOfMonth(lastDayOfMonth : Date) : Date
+    private getdateOfEndOfBudget(lastDayOfMonth : Date) : Date
     {
         if (this.getDayOfWeek(lastDayOfMonth.getDay()) == "Sunday" || this.getDayOfWeek(lastDayOfMonth.getDay()) == "Saturday")
         {
-            return this.getLastBussnessDayOfMonth(this.addDays(lastDayOfMonth, -1));
+            return this.getdateOfEndOfBudget(this.addDays(lastDayOfMonth, -1));
         }
         else
         {
             return lastDayOfMonth;
         }
+    }
+
+    private getLastDayOfMonth(): Date{
+        var date = new Date();
+        var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+        return lastDay;
+
     }
 
     private static GetAmountPerDay(saldo: number, start: Date, end:Date): number
@@ -103,56 +114,91 @@ export class BudgetService {
             }
         }
         
-        return this.userBudget.savings;        
-        
+        return this.userBudget.savings;      
     }
+
+    private getEndOfMonthtlyCycle(){
+        let endOfMonthlyBudget: Date;
+        let opt = Number(this.budgetSettings.budgetEndsOption);
+        if (isNaN(opt)){
+            opt = 0;
+        }
+        switch (opt) {
+            case 0:
+                endOfMonthlyBudget = this.getLastDayOfMonth();
+                break;
+            case 1:
+                endOfMonthlyBudget = this.getdateOfEndOfBudget(this.getLastDayOfMonth());
+                break;
+            case 2:
+                let dateString: string = this.budgetSettings.budgetEndsDate.split("T")[0] + " 00:00:00";
+                endOfMonthlyBudget = new Date(dateString);
+            default:
+                break;
+        }
+
+        return endOfMonthlyBudget;  
+    }
+
+
                             //num from 0 to 6 (sat to sund)
-    public calculateBudget(cycleEnds: number , saldo: number)
+    public calculateBudget(saldo: number)
         {
-           
+            this.budgetData.get('settingsInfo').then((budgetSettings) => {
+                this.budgetSettings = JSON.parse(budgetSettings);
+            });
+
             this.userBudget.balance = saldo;
 
             let today = new Date();
 
-            let lastDayOfMonth: number = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+            let cycleEnds: number = Number(this.budgetSettings.cycleEndsDay);            
 
-            let completeDateOfLastDayOfMonth: Date = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+            let dateOfEndOfBudget: Date = this.getEndOfMonthtlyCycle();
 
-            //this must become a variable, which will be a user option from the settings page
-            let lastBussnessDayOfMonth: Date = this.getLastBussnessDayOfMonth(completeDateOfLastDayOfMonth);
+            let remainingDays = dateOfEndOfBudget.getDate() - today.getDate();
 
-            let remainingDays = lastBussnessDayOfMonth.getDate() - today.getDate();
-
-            let amountPerDay: number = saldo / (remainingDays + 1);
-            //dailyBudget = amountPerDay;
+            let amountPerDay: number = saldo / (remainingDays + 1);          
 
             let budget = new Array<{dias: Array<number>, amount: number, month: number, initWeekAmount: number}>();;
 
             let weekNbudget: number = 0;
+
             let weekBudget: [String, String];
 
             //24
-            let currentDate: Date = today;
-
+            let currentDate: Date = new Date(today.getFullYear() + "-"+ Number(today.getMonth() + 1)+"-"+today.getDate()+ " 00:00:00");
             //lastDayOfMonth = 31
-            while (currentDate.getDate() != lastBussnessDayOfMonth.getDate())
+            while (currentDate <= dateOfEndOfBudget)
             {
                 let budgetOfWeek = 0;
                 let daysOfweekN: Array<number> = new Array<number>();
-                
+                let canProceed: boolean = false;
+
                 do{
                     daysOfweekN.push(currentDate.getDate());
-                    currentDate = this.addDays(currentDate, 1);
-                } while (currentDate.getDay() <= cycleEnds && currentDate.getDate() != lastBussnessDayOfMonth.getDate())
+                    if (currentDate.getDay() != cycleEnds)
+                     {
+                         currentDate = this.addDays(currentDate, 1);
+                         
+                     }
+ 
+                } while (currentDate.getDay() != cycleEnds && currentDate <= dateOfEndOfBudget)
                 
-                if (currentDate.getDate() == lastBussnessDayOfMonth.getDate()){
-                    daysOfweekN.push(currentDate.getDate());
+                
+                if (daysOfweekN.length == 1 && currentDate.getDay() == cycleEnds && today.getDate() != currentDate.getDate()){
+                    canProceed = true;             
+                }
+
+                if ((currentDate.getDate() == dateOfEndOfBudget.getDate() || currentDate.getDay() == cycleEnds) && (daysOfweekN.length > 1 || canProceed) ){
+                    daysOfweekN.push(currentDate.getDate());                   
                 }
 
                 budgetOfWeek =  parseFloat(String(daysOfweekN.length * amountPerDay));
                 
-                budget.push({dias: daysOfweekN, amount: budgetOfWeek, month: today.getMonth() + 1, initWeekAmount: budgetOfWeek});         
+                budget.push({dias: daysOfweekN, amount: budgetOfWeek, month: today.getMonth() + 1, initWeekAmount: budgetOfWeek});
 
+                currentDate = this.addDays(currentDate, 1);
             }
 
             console.log("Budget local que vai ser setado no userBudget.weekBudget: "+budget);

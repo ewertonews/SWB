@@ -21,6 +21,21 @@
             "9" : "Outubro",
             "10" : "Novembro",
             "11" : "Dezembro"
+        },
+        "cycle-ends-option" : "Ultimo dia orçamento semanal:",
+        "budget-ends-option" : "Calcular orçamento até:",
+        "last-day-month" : "Último dia do més",
+        "last-business-day": "Último dia útil do més",
+        "specific-date" : "Data específica",      
+        "choose-date" : "Escolha a data",      
+        "Days" : {
+            "sun" : "Domingo",
+            "mon" : "Segunda",
+            "tue" : "Terça",
+            "wed" : "Quarta",
+            "thu" : "Quinta",
+            "fri" : "Sexta",
+            "sat" : "Sábado"
         }     
     }    
 }

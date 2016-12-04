@@ -19,8 +19,15 @@
       <ion-col>{{"Strings.Months." + currMonth | translate}}</ion-col>    
     </ion-row>      
   </ion-card-header>
-  <ion-card-content class="balanceContent" (click)="editBalance()">      
-      <h1>{{"Strings.app_currency" | translate}} <span>{{budget.balance}}</span></h1>  
+  <ion-card-content class="balanceContent">      
+      <ion-row>
+        <ion-col width-80 (click)="editBalance()">
+           <h1>{{"Strings.app_currency" | translate}} <span>{{budget.balance}}</span></h1>
+        </ion-col>
+        <ion-col>
+          <button ion-button white style="height:3.4vh; marging-top:-2vh; width:6vw;" (click)="recalculate()"><ion-icon name="refresh"></ion-icon></button>
+        </ion-col>
+      </ion-row>        
   </ion-card-content>
 </ion-card>
 

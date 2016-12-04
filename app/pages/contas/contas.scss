@@ -2,12 +2,30 @@
 }
 
 .billitem{
-    margin-bottom: -3vh;
-    
+    margin-bottom: -3vh;    
 }
 
-ion-label.billpaid{
-    
-    margin-right: -45vw;   
+ion-label.billpaid{    
+    margin-right: -45vw;
+
 }
 
+ion-item.billvalue{
+    padding-bottom: -4.5vh;
+    //background-color: green;
+    height: 6vh;   
+}
+
+ion-item.paidToggle{
+    //background-color: lightblue;
+     height: 3vh;
+}
+
+ion-card-content.contasTopCard{
+   height: 4.8vh;
+}
+
+ion-card-header.contasTopCard{  
+   padding-top: 1vh;
+   height: 4.5vh;
+}

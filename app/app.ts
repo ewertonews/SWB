@@ -2,7 +2,7 @@ import {provide} from '@angular/core';
 import {Http, HTTP_PROVIDERS} from '@angular/http';
 import {TranslateService, TranslatePipe, TranslateLoader, TranslateStaticLoader} from 'ng2-translate/ng2-translate';
 import {Component, ViewChild, enableProdMode} from '@angular/core';
-import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
+import {ionicBootstrap, Platform, MenuController, Nav, Storage, SqlStorage} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {ConfiguracoesPage} from './pages/configuracoes/configuracoes';
 import {TabsPage} from './pages/tabs/tabs';
@@ -19,7 +19,12 @@ class MyApp {
   // make HelloIonicPage the root (or first) page
   rootPage: any = TabsPage;
   pages: Array<{title: string, component: any}>;
- 
+  // cycleEndsDay: number;  
+  // budgetEndsOption: number;
+  // budgetEndsDate: any;
+  // settingsInfo: {cycleEndsDay: number, budgetEndsOption: number, budgetEndsDate: any};
+  budgetData;
+  userLang;
   constructor(
     public platform: Platform,
     public menu: MenuController,
@@ -27,13 +32,25 @@ class MyApp {
     
   ) {
 
+      
+      
+      this.budgetData = new Storage(SqlStorage, {name: 'SmartWeeklyBudgetDB'});
+      
+     
+      
+    this.userLang = navigator.language.split("-")[0];
+    let settingsTitle = "Settings";
+
+    if (this.userLang == "pt"){
+      settingsTitle = "Configurações";
+    }
     
     this.initializeApp();
 
     // set our app's pages
     this.pages = [
       { title: 'Home', component: TabsPage },
-      { title: 'Settings**', component: ConfiguracoesPage },
+      { title: settingsTitle, component: ConfiguracoesPage },
       { title: 'List', component: ListPage }
     ];
     this.translateConfig();
@@ -60,7 +77,7 @@ class MyApp {
     userLang = /(pt|en)/gi.test(userLang) ? userLang : 'pt';
  
     // this language will be used as a fallback when a translation isn't found in the current language
-    this.translate.setDefaultLang('pt');
+    this.translate.setDefaultLang('en');
  
     // the lang to use, if the lang isn't available, it will use the current loader to get them
     this.translate.use(userLang);

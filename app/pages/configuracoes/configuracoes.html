@@ -19,29 +19,29 @@
  </ion-select>-->
  <ion-list>
   <ion-item>
-    <ion-label>Weekly cycle ends on:</ion-label>
+    <ion-label>{{"Strings.cycle-ends-option" | translate}}</ion-label>
     <ion-select [(ngModel)]="cycleEndsDay">
-      <ion-option value="0" checked="true">Sunday**</ion-option>
-      <ion-option value="1">Monday**</ion-option>
-      <ion-option value="2">Tuesday**</ion-option>
-      <ion-option value="3">Wednesday**</ion-option>
-      <ion-option value="4">Thursday**</ion-option>
-      <ion-option value="5">Friday**</ion-option>
-      <ion-option value="6">Saturday**</ion-option>
+      <ion-option value="0" checked="true">{{"Strings.Days.sun" | translate}}</ion-option>
+      <ion-option value="1">{{"Strings.Days.mon" | translate}}</ion-option>
+      <ion-option value="2">{{"Strings.Days.tue" | translate}}</ion-option>
+      <ion-option value="3">{{"Strings.Days.wed" | translate}}</ion-option>
+      <ion-option value="4">{{"Strings.Days.thu" | translate}}</ion-option>
+      <ion-option value="5">{{"Strings.Days.fri" | translate}}</ion-option>
+      <ion-option value="6">{{"Strings.Days.sat" | translate}}</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label>Calculate budget until:</ion-label>
+    <ion-label>{{"Strings.budget-ends-option" | translate}}</ion-label>
     <ion-select [(ngModel)]="budgetEndsOption">
-      <ion-option value="0" checked="true">Last day of month**</ion-option>
-      <ion-option value="1">last business day of month**</ion-option>
-      <ion-option value="2">Specific date**</ion-option>      
+      <ion-option value="0" checked="true">{{"Strings.last-day-month" | translate}}</ion-option>
+      <ion-option value="1">{{"Strings.last-business-day" | translate}}</ion-option>
+      <ion-option value="2">{{"Strings.specific-date" | translate}}</ion-option>      
     </ion-select>
   </ion-item>
   <ion-item *ngIf="budgetEndsOption == 2">
-    <ion-label>Select the date**</ion-label>
+    <ion-label>{{"Strings.choose-date" | translate}}</ion-label>
     <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="budgetEndsDate"></ion-datetime>
   </ion-item>
 </ion-list>
-<button ion-button primary (click)="saveSettings()">Save**</button>
+<button ion-button primary (click)="saveSettings()">Save*</button>
 </ion-content>

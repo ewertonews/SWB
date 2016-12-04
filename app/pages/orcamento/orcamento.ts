@@ -47,10 +47,14 @@ export class OrcamentoPage {
         console.log("Valor que vai ser enviado pra o calculateBudget: "+ tempBudget.balance);
         
         
-        this.budget = this._budgetService.calculateBudget(5, tempBudget.balance);     
+        this.budget = this._budgetService.calculateBudget(tempBudget.balance);     
       }
       })              
     }
+
+  recalculate(){
+    this.budget = this._budgetService.calculateBudget(this.budget.balance);
+  }
 
   editBalance(){
     let prompt = this.alerCtrl.create({      
@@ -59,7 +63,8 @@ export class OrcamentoPage {
         {
           name: 'Amount',
           placeholder: 'Amount',
-          type: 'number'
+          type: 'number',
+          value: this.budget.balance
         },
       ],
       buttons: [
@@ -74,14 +79,14 @@ export class OrcamentoPage {
           handler: data => {
             //console.log(data);
             // this.curr_balance = data.Amount;                       
-            this._budgetService.calculateBudget(5, data.Amount);
+            this.budget = this._budgetService.calculateBudget(data.Amount);
             
-            this.budgetData.get('userBudget').then((savedBudget) =>{
-              console.log("Saved budget: "+savedBudget);
-              this.budget.weeklyBudget = JSON.parse(savedBudget).weeklyBudget;
-              this.budget.balance = JSON.parse(savedBudget).balance;
-              this.budgetData.set('userBudget', JSON.stringify(this.budget));
-            });
+            // this.budgetData.get('userBudget').then((savedBudget) =>{
+            //   console.log("Saved budget: "+savedBudget);
+            //   this.budget.weeklyBudget = JSON.parse(savedBudget).weeklyBudget;
+            //   this.budget.balance = JSON.parse(savedBudget).balance;
+            //   this.budgetData.set('userBudget', JSON.stringify(this.budget));
+            // });
           }
         }
       ]
@@ -118,7 +123,7 @@ export class OrcamentoPage {
               if (b.dias.indexOf(day) > -1){
                 console.log(b.amount);
                 console.log(data.amount);
-                b.amount = (parseFloat(b.amount) - parseFloat(data.Amount)).toFixed(2);
+                b.amount = parseFloat(b.amount) - parseFloat(data.Amount);
                 return b;
               }
             });
@@ -126,16 +131,10 @@ export class OrcamentoPage {
               console.log("budget after map"+ JSON.stringify(this.budget));
               
             //this.curr_balance = this.curr_balance - data.Amount;
-            this.budget.balance = this.budget.balance - data.Amount;
+            this.budget.balance = parseFloat((this.budget.balance - data.Amount).toString());
             
             this.budgetData.set('userBudget', JSON.stringify(this.budget));
-            // console.log("=================> (before calc)"+JSON.stringify(this.budget));
-            
-            // this._budgetService.spend(data.Amount);
-            // this.budgetData.get('userBudget').then((savedBudget) =>{
-            //   this.budget = JSON.parse(savedBudget);     
-            //   console.log("budget retrieved from db: "+JSON.stringify(this.budget));         
-            // });
+           
             console.log("=================>"+JSON.stringify(this.budget));
           }
         }
