@@ -18,7 +18,7 @@
 <ion-content padding>
     <ion-list >
       <ion-item *ngFor="let expense of expensesRecord">
-        <p>Amount spent*: {{expense.value}}</p>
+        <p>Amount spent*: {{expense.value.toFixed(2)}}</p>
         <p>Date and time*: {{expense.dateTime.toString()}}</p>
       </ion-item>
     </ion-list>
