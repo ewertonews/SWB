@@ -25,15 +25,7 @@ export class ExpensesLogsPage {
            this.expensesRecord =JSON.parse(expenses);
         }
          
-          // console.log("after setting in loc al variable:");
-          // console.log(this.settingsInfo);
-       
-        // console.log("settingsInfo fora do get:")    
-        // console.log(this.settingsInfo);
-        // console.log("Vai pro if agora...")
-        // if (this.expensesRecord == null || this.expensesRecord === undefined){
-        //    this.expensesRecord = [];
-        // }
+      
       });
   }
 

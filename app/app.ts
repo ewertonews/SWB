@@ -33,9 +33,7 @@ class MyApp {
     
   ) {      
       
-    this.budgetData = new Storage(SqlStorage, {name: 'SmartWeeklyBudgetDB'});     
      
-      
     this.userLang = navigator.language.split("-")[0];
     let settingsTitle = "Settings";
 
@@ -56,8 +54,7 @@ class MyApp {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
-      
+    this.platform.ready().then(() => {      
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();

@@ -19,18 +19,16 @@ export class ContasPage {
     this.init = 1;
 
     this.budget = new BudgetModel(); 
-    this.budgetData.get('userBudget').then((savedBudget) =>{
-              //console.log("fez a consulta");
-              this.budget = JSON.parse(savedBudget);
-              //console.log("retrieved budget: "+ savedBudget);              
-            });
+    this.budgetData.get('userBudget').then((savedBudget) =>{   
+        if(savedBudget){
+          this.budget = JSON.parse(savedBudget);
+        }                     
+    });
 
     this.budgetData.get('billList').then((savedBills) =>{
               console.log("fez a consulta de bills");
-              if (savedBills === undefined){
-                console.log("TABELA DE CONTAS TÁ VAZIA!");
-              }else{
-                this.ListaDeContas = JSON.parse(savedBills);
+              if (savedBills){
+                 this.ListaDeContas = JSON.parse(savedBills);
               }
               console.log("retrieved bills : "+ savedBills);               
             });
@@ -39,13 +37,15 @@ export class ContasPage {
 
   ionViewDidEnter(){
     this.budgetData.get('userBudget').then((savedBudget) =>{
-             let tempBudget = JSON.parse(savedBudget);
+             if(savedBudget){
+               let tempBudget = JSON.parse(savedBudget);
                          
-             if (this.init > 0  && tempBudget.balance != this.budget.balance){               
-               this.budgetData.get('userBudget').then((updatedBudget) =>{
-                 this.budget = JSON.parse(updatedBudget);                 
-               });
-             }             
+                if (this.init > 0  && tempBudget.balance != this.budget.balance){               
+                  this.budgetData.get('userBudget').then((updatedBudget) =>{
+                    this.budget = JSON.parse(updatedBudget);                 
+                  });
+                }
+             }                          
           });
 
   }

@@ -8,5 +8,40 @@
 </ion-header>
 
 <ion-content>
-  
+  <ion-card>
+  <ion-card-header class="contasTopCard">
+    <ion-row>
+      Total Saved:*
+    </ion-row>  
+  </ion-card-header>
+  <ion-card-content class="contasTopCard">      
+      <h1>{{"Strings.app_currency" | translate}} <span>{{ getSavings() }}</span></h1>  
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-header>
+   <ion-list>
+      <ion-item>
+       <ion-label>Saved in:*</ion-label>
+        <ion-select [(ngModel)]="monthSelection">
+          <ion-option value="0">{{"Strings.Months.0" | translate}}</ion-option>
+          <ion-option value="1">{{"Strings.Months.1" | translate}}</ion-option>
+          <ion-option value="2">{{"Strings.Months.2" | translate}}</ion-option>
+          <ion-option value="3">{{"Strings.Months.3" | translate}}</ion-option>
+          <ion-option value="4">{{"Strings.Months.4" | translate}}</ion-option>
+          <ion-option value="5">{{"Strings.Months.5" | translate}}</ion-option>
+          <ion-option value="6">{{"Strings.Months.6" | translate}}</ion-option>
+          <ion-option value="7">{{"Strings.Months.7" | translate}}</ion-option>
+          <ion-option value="8">{{"Strings.Months.8" | translate}}</ion-option>
+          <ion-option value="9">{{"Strings.Months.9" | translate}}</ion-option>
+          <ion-option value="10">{{"Strings.Months.10" | translate}}</ion-option>
+          <ion-option value="11">{{"Strings.Months.11" | translate}}</ion-option>
+        </ion-select>
+      </ion-item>
+  </ion-list>
+  </ion-card-header>
+  <ion-card-content>
+    <h1>{{"Strings.app_currency" | translate}} <span>{{ getMonthSavings(monthSelection) }}</span></h1>  
+  </ion-card-content>
+</ion-card>
 </ion-content>

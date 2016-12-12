@@ -16,16 +16,17 @@ export class BudgetService {
         this.savings = new Array<{month: number, amount: number}>();
         
         this.budgetData.get('settingsInfo').then((budgetSettings) => {
-            this.budgetSettings = JSON.parse(budgetSettings);
+            if(budgetSettings){
+                this.budgetSettings = JSON.parse(budgetSettings);
+            }            
         });
 
          this.budgetData.get('savings').then((savings) =>{
             if(savings){
-                this.savings = JSON.parse(savings);
+                this.savings = JSON.parse(savings);               
             }
         });
-    }
-    
+    }    
 
     private getDayOfWeek(dayNumber: number): string{
         let dayOfWeet = "";
@@ -128,7 +129,17 @@ export class BudgetService {
                     }
                 }
             }
-            this.savings.push({month: month, amount: amount});
+            if (this.savings.length == 0){
+                this.savings.push({month: month, amount: amount});
+            }else{
+                for (var i = 0; i <  this.savings.length; i++) {            
+                    if (this.savings[i].month == month){
+                        this.savings[i] = {month: month, amount: this.savings[i].amount + amount};
+                        break;
+                    }
+                }
+            }
+            
             this.budgetData.set('savings', JSON.stringify(this.savings));          
 
         });      
@@ -210,13 +221,15 @@ export class BudgetService {
                 }
 
                 if ((currentDate.getDate() == dateOfEndOfBudget.getDate() || currentDate.getDay() == cycleEnds) && (daysOfweekN.length > 1 || canProceed) ){
-                    daysOfweekN.push(currentDate.getDate());                   
+                    if (currentDate.getDate() <= dateOfEndOfBudget.getDate()){
+                        daysOfweekN.push(currentDate.getDate());    
+                    }                                   
                 }
 
                 budgetOfWeek =  parseFloat(String(daysOfweekN.length * amountPerDay));
                 
                 budget.push({dias: daysOfweekN, amount: budgetOfWeek, month: today.getMonth() + 1, initWeekAmount: budgetOfWeek});
-                console.log("pushed budget after calculation: "+JSON.stringify(budget))
+                //console.log("pushed budget after calculation: "+JSON.stringify(budget))
                 currentDate = this.addDays(currentDate, 1);
             }
 

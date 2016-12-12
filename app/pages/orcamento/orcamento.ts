@@ -18,7 +18,8 @@ export class OrcamentoPage {
   currMonth;  
   expensesRecord : Array<{value: number, dateTime: string, long: string, lat: string}>;
   msgSavedMoney: string;
- 
+  public press: number = 0;
+  public tap: number = 0;
 
   constructor(public navCtrl: NavController, public alerCtrl: AlertController, public toastCtrl: ToastController, public _budgetService: BudgetService) {
     this.currMonth = (new Date().getMonth()).toString(); 
@@ -26,15 +27,15 @@ export class OrcamentoPage {
     this.expensesRecord = new Array<{value: number, dateTime: string, long: string, lat: string}>();
     this.init = 1;
 
+    this.budget = new BudgetModel();
+
     this.budgetData.get('userBudget').then((budget) =>{
         console.log("budget salvo no db: "+JSON.stringify(budget))
-        this.budget =JSON.parse(budget);
+        if(budget){
+          this.budget =JSON.parse(budget);
+        }        
     })    
-     console.log(this.currMonth)
-    if (this.budget == null || this.budget === undefined){
-      console.log("entrou no if")
-      this.budget = new BudgetModel();
-    }
+        
    
     console.log("initial Saved budget: "+JSON.stringify(this.budget));
     if(this.budget.balance == "0"){
@@ -43,14 +44,14 @@ export class OrcamentoPage {
 
      this.budgetData.get('expenses').then((expense) =>{
        if(expense){
+         console.log("tem expenses");
          this.expensesRecord = JSON.parse(expense);
        }
      });   
   }
-  ionViewDidEnter(){  
-
-
+  ionViewDidEnter(){
       this.budgetData.get('userBudget').then((budget) =>{
+        if(!budget)return;
         let tempBudget = JSON.parse(budget);
         console.log("saldo do tempBudget: "+ tempBudget.balance);
 
@@ -66,7 +67,7 @@ export class OrcamentoPage {
            weeksArray.push(wb.dias);
           });
           let todaysDate = new Date().getDate();
-
+          console.log("todaysDate: "+ todaysDate);
           let i = 0;
           let isIn = 0;          
 
@@ -117,7 +118,7 @@ export class OrcamentoPage {
                       case "3":
                         let newBudget  = this.addToSavings(lastWeekbalance, this.currMonth);
 
-                        console.log("budget retornado to metodo save no BudgetService: "+ newBudget)
+                        console.log("budget retornado to metodo save no BudgetService: "+ JSON.stringify(newBudget))
 
                         newBudget.weeklyBudget[i-1].amount = 0;
                       
@@ -262,5 +263,21 @@ export class OrcamentoPage {
       toast.present();
     }
     
+  }
+
+  getAmountPerDay(e, wb, days: Array<number>){
+     this.tap++;
+     if(this.tap == 2){
+      //  console.log("tapped " + this.tap + "! :D");
+      //  console.log();
+      //  console.log(days);
+
+       let alert = this.alerCtrl.create();
+       alert.setTitle("Amount per day:");
+      alert.setSubTitle((wb/days.length).toFixed(2));
+       alert.present();
+       this.tap = 0;
+     }
+     
   }
 }

@@ -30,15 +30,12 @@ export class ConfiguracoesPage {
        this.budgetData = new Storage(SqlStorage, {name: 'SmartWeeklyBudgetDB'});       
    
        this.budgetData.get('settingsInfo').then((settings) =>{  
-         console.log("Retrieved settings: ");
-         console.log(settings);         
+        console.log("Retrieved settings: ");
+        console.log(settings);         
+        if(settings){
           this.settingsInfo =JSON.parse(settings);
-          // console.log("after setting in loc al variable:");
-          // console.log(this.settingsInfo);
-       
-        // console.log("settingsInfo fora do get:")    
-        // console.log(this.settingsInfo);
-        // console.log("Vai pro if agora...")
+        }
+        
         if (this.settingsInfo == null || this.settingsInfo === undefined){
             console.log("entrou no if.... settingsInfo null or undefined");
             this.cycleEndsDay = 6;
