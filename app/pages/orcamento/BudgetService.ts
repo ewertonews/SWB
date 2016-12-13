@@ -111,41 +111,7 @@ export class BudgetService {
         return amountPerDay;
     }
 
-    public save(month: number, amount: number) : BudgetModel
-    {
-
-        this.budgetData.get('userBudget').then((budget) => {
-            this.userBudget = JSON.parse(budget);
-            
-            console.log("user budget retrieved when saving: " + JSON.stringify(this.userBudget));
-
-            if (this.userBudget.savings.length == 0){
-                this.userBudget.savings[0] = {month: month, amount: amount};
-            }else{
-                for (var i = 0; i <  this.userBudget.savings.length; i++) {            
-                    if (this.userBudget.savings[i].month == month){
-                        this.userBudget.savings[i] = {month: month, amount: this.userBudget.savings[i].amount + amount};
-                        break;
-                    }
-                }
-            }
-            if (this.savings.length == 0){
-                this.savings.push({month: month, amount: amount});
-            }else{
-                for (var i = 0; i <  this.savings.length; i++) {            
-                    if (this.savings[i].month == month){
-                        this.savings[i] = {month: month, amount: this.savings[i].amount + amount};
-                        break;
-                    }
-                }
-            }
-            
-            this.budgetData.set('savings', JSON.stringify(this.savings));          
-
-        });      
-        
-        return this.userBudget    
-    }
+    
 
     private getEndOfMonthtlyCycle(){
         let endOfMonthlyBudget: Date;
@@ -245,6 +211,61 @@ export class BudgetService {
 
             return this.userBudget
         }
+        public save(month: number, amount: number) : BudgetModel
+        {
 
-   
+            this.budgetData.get('userBudget').then((budget) => {
+                this.userBudget = JSON.parse(budget);
+                
+                console.log("user budget retrieved when saving: " + JSON.stringify(this.userBudget));
+
+                if (this.userBudget.savings.length == 0){
+                    this.userBudget.savings[0] = {month: month, amount: amount};
+                }else{
+                    for (var i = 0; i <  this.userBudget.savings.length; i++) {            
+                        if (this.userBudget.savings[i].month == month){
+                            this.userBudget.savings[i] = {month: month, amount: this.userBudget.savings[i].amount + amount};
+                            break;
+                        }
+                    }
+                }
+                if (this.savings.length == 0){
+                    this.savings.push({month: month, amount: amount});
+                }else{
+                    for (var i = 0; i <  this.savings.length; i++) {            
+                        if (this.savings[i].month == month){
+                            this.savings[i] = {month: month, amount: this.savings[i].amount + amount};
+                            break;
+                        }
+                    }
+                }
+                
+                this.budgetData.set('savings', JSON.stringify(this.savings));          
+
+            });      
+            
+            return this.userBudget    
+        }
+
+         public addFromLastWeekToThisWeekOnly(newAmount: number, weekIndex: number) 
+         {
+            
+             this.budgetData.get('userBudget').then((bud) => {
+                //bud.weeklyBudget[weekIndex].amount =  bud.weekBudget[weekIndex].amount + newAmount;
+                 this.userBudget = JSON.parse(bud);
+                 let newWeekBalance = this.userBudget.weeklyBudget[weekIndex].amount + newAmount;
+                 
+                 this.userBudget.weeklyBudget[weekIndex].amount = newWeekBalance; 
+                 this.userBudget.weeklyBudget[weekIndex].initWeekAmount = newWeekBalance;
+                 this.userBudget.weeklyBudget[weekIndex - 1].amount = 0;
+                 console.log("novo budget:");
+                 console.log( this.userBudget);
+
+                 this.budgetData.set('userBudget', JSON.stringify(this.userBudget))
+                  console.log("setado novobudget depois de adicionado à semana..");
+             });
+            
+             
+         }
+
 }

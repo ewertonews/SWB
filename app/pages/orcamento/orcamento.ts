@@ -114,19 +114,29 @@ export class OrcamentoPage {
                 alert.addButton({
                   text: 'OK',
                   handler: data => {
+
                     switch (data) {
+                      case "1":
+                        this.addFromLastWeekToThisWeekOnly(lastWeekbalance, i);                         
+                        
+                        this.budgetData.get('userBudget').then((bud)=>{
+                           console.log("novo orçamento depois de added to this week: ");
+                            console.log(bud);
+                            this.budget = bud;
+                        });
+                        //
+                      break;
                       case "3":
                         let newBudget  = this.addToSavings(lastWeekbalance, this.currMonth);
 
                         console.log("budget retornado to metodo save no BudgetService: "+ JSON.stringify(newBudget))
 
                         newBudget.weeklyBudget[i-1].amount = 0;
-                      
+                        newBudget.balance = newBudget.balance - lastWeekbalance;
                         this.budgetData.set('savings', JSON.stringify(newBudget));
                         this.budgetData.set('userBudget', JSON.stringify(newBudget));
 
                          console.log("budget após economia: "+ JSON.stringify(newBudget))
-
                         break;                    
                       default:
                         break;
@@ -147,6 +157,7 @@ export class OrcamentoPage {
     }
 
   recalculate(){
+
     this.budget = this._budgetService.calculateBudget(this.budget.balance);
   }
 
@@ -265,6 +276,10 @@ export class OrcamentoPage {
     
   }
 
+  addFromLastWeekToThisWeekOnly(amount: number, weekIndex: number) {
+    this._budgetService.addFromLastWeekToThisWeekOnly(amount, weekIndex);    
+  }
+
   getAmountPerDay(e, wb, days: Array<number>){
      this.tap++;
      if(this.tap == 2){
@@ -274,7 +289,7 @@ export class OrcamentoPage {
 
        let alert = this.alerCtrl.create();
        alert.setTitle("Amount per day:");
-      alert.setSubTitle((wb/days.length).toFixed(2));
+       alert.setSubTitle((wb/days.length).toFixed(2));
        alert.present();
        this.tap = 0;
      }
