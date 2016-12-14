@@ -134,6 +134,7 @@ export class OrcamentoPage {
                         newBudget.weeklyBudget[i-1].amount = 0;
                         newBudget.balance = newBudget.balance - lastWeekbalance;
                         this.budgetData.set('savings', JSON.stringify(newBudget));
+                        
                         this.budgetData.set('userBudget', JSON.stringify(newBudget));
 
                          console.log("budget após economia: "+ JSON.stringify(newBudget))
@@ -292,7 +293,16 @@ export class OrcamentoPage {
        alert.setSubTitle((wb/days.length).toFixed(2));
        alert.present();
        this.tap = 0;
-     }
-     
+     }     
+  }
+
+  showOptionsManageMoney(){
+    this.press++;
+    if(this.press == 1){
+       let alert = this.alerCtrl.create();
+       alert.setTitle("Manage this week's money");
+       alert.present();
+       this.press = 0;
+    }
   }
 }

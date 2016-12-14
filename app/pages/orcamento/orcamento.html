@@ -32,7 +32,7 @@
 </ion-card>
 <ion-card>
   <ion-card-content>
-    <ion-card  *ngFor="let weekbudget of budget.weeklyBudget" class="card-week" (tap)="getAmountPerDay($event, weekbudget.initWeekAmount, weekbudget.dias)">
+    <ion-card  *ngFor="let weekbudget of budget.weeklyBudget" class="card-week" (press)="showOptionsManageMoney($event)" (tap)="getAmountPerDay($event, weekbudget.initWeekAmount, weekbudget.dias)">
       <ion-card-header>
         <ion-row class="card-week-header">
           <ion-col width-70 *ngIf="weekbudget.dias[0] == weekbudget.dias[weekbudget.dias.length - 1]">
