@@ -31,12 +31,9 @@ class MyApp {
     public menu: MenuController,
     private  translate: TranslateService
     
-  ) {
-
+  ) {      
       
-      
-      this.budgetData = new Storage(SqlStorage, {name: 'SmartWeeklyBudgetDB'});
-      
+    this.budgetData = new Storage(SqlStorage, {name: 'SmartWeeklyBudgetDB'});     
      
       
     this.userLang = navigator.language.split("-")[0];

@@ -8,12 +8,21 @@ export class BudgetService {
     userBudget: BudgetModel;
     budgetData;
     budgetSettings;
+    savings : Array<{month: number, amount: number}>;
 
     constructor() {
         this.userBudget = new BudgetModel();
         this.budgetData = new Storage(SqlStorage, {name: 'SmartWeeklyBudgetDB'});
+        this.savings = new Array<{month: number, amount: number}>();
+        
         this.budgetData.get('settingsInfo').then((budgetSettings) => {
             this.budgetSettings = JSON.parse(budgetSettings);
+        });
+
+         this.budgetData.get('savings').then((savings) =>{
+            if(savings){
+                this.savings = JSON.parse(savings);
+            }
         });
     }
     
@@ -101,20 +110,30 @@ export class BudgetService {
         return amountPerDay;
     }
 
-    public save(month: number, amount: number)
+    public save(month: number, amount: number) : BudgetModel
     {
-        if (this.userBudget.savings.length == 0){
-            this.userBudget.savings[0] = {month: month, amount: amount};
-        }else{
-            for (var i = 0; i <  this.userBudget.savings.length; i++) {            
-                if (this.userBudget.savings[i].month == month){
-                    this.userBudget.savings[i] = {month: month, amount: this.userBudget.savings[i].amount + amount};
-                    break;
+
+        this.budgetData.get('userBudget').then((budget) => {
+            this.userBudget = JSON.parse(budget);
+            
+            console.log("user budget retrieved when saving: " + JSON.stringify(this.userBudget));
+
+            if (this.userBudget.savings.length == 0){
+                this.userBudget.savings[0] = {month: month, amount: amount};
+            }else{
+                for (var i = 0; i <  this.userBudget.savings.length; i++) {            
+                    if (this.userBudget.savings[i].month == month){
+                        this.userBudget.savings[i] = {month: month, amount: this.userBudget.savings[i].amount + amount};
+                        break;
+                    }
                 }
             }
-        }
+            this.savings.push({month: month, amount: amount});
+            this.budgetData.set('savings', JSON.stringify(this.savings));          
+
+        });      
         
-        return this.userBudget.savings;      
+        return this.userBudget    
     }
 
     private getEndOfMonthtlyCycle(){
@@ -197,11 +216,11 @@ export class BudgetService {
                 budgetOfWeek =  parseFloat(String(daysOfweekN.length * amountPerDay));
                 
                 budget.push({dias: daysOfweekN, amount: budgetOfWeek, month: today.getMonth() + 1, initWeekAmount: budgetOfWeek});
-
+                console.log("pushed budget after calculation: "+JSON.stringify(budget))
                 currentDate = this.addDays(currentDate, 1);
             }
 
-            console.log("Budget local que vai ser setado no userBudget.weekBudget: "+budget);
+            console.log("Budget local que vai ser setado no userBudget.weekBudget: "+ JSON.stringify(budget));
             
             this.userBudget.weeklyBudget = budget;
             this.userBudget.balance = parseFloat(saldo.toString());
@@ -210,6 +229,7 @@ export class BudgetService {
             this.budgetData.get('userBudget').then((res) => {
                 console.log("Budget saved to in the BudgetService (calculateBudget): "+ res);
             })
+
             return this.userBudget
         }
 

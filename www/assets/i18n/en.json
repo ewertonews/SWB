@@ -36,6 +36,7 @@
             "thu" : "Thursday",
             "fri" : "Friday",
             "sat" : "Saturday"
-        }
+        },
+        "savedMoney" : "Great! You saved money from last week! \\o/ What do you wanna do?"
     }
 }
