@@ -119,13 +119,7 @@ export class OrcamentoPage {
 
                     switch (data) {
                       case "1":
-                        this.addFromLastWeekToThisWeekOnly(lastWeekbalance, i);                         
-                        
-                        this.budgetData.get('userBudget').then((bud)=>{
-                           console.log("novo orçamento depois de added to this week: ");
-                            console.log(bud);
-                            this.budget = bud;
-                        });
+                         this.budget = this.addFromLastWeekToThisWeekOnly(lastWeekbalance, i);                      
                         //
                       break;
                       case "3":
@@ -282,7 +276,7 @@ export class OrcamentoPage {
   }
 
   addFromLastWeekToThisWeekOnly(amount: number, weekIndex: number) {
-    this._budgetService.addFromLastWeekToThisWeekOnly(amount, weekIndex);    
+    return this._budgetService.addFromLastWeekToThisWeekOnly(amount, weekIndex);    
   }
 
   getAmountPerDay(e, wb, days: Array<number>){

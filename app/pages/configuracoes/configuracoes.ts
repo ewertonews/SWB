@@ -40,8 +40,7 @@ export class ConfiguracoesPage {
           if (this.budgetEndsDate == null || this.budgetEndsDate == ""){
               this.budgetEndsDate = new Date(this.today.getFullYear() + "-"+ Number(this.today.getMonth() + 1)+"-"+this.today.getDate()+ " 00:00:00").toISOString();
           }
-        }
-        
+        }        
       
         
       });
