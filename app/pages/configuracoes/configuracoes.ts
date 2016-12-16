@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { Storage, SqlStorage, ToastController } from 'ionic-angular';
+import { Storage, SqlStorage, ToastController, ViewController } from 'ionic-angular';
 import {TranslatePipe} from "ng2-translate/ng2-translate";
 
 //ToastController
@@ -20,7 +20,7 @@ export class ConfiguracoesPage {
   settingsInfo: {cycleEndsDay: number, budgetEndsOption: number, budgetEndsDate: any};
   toastMessage;
 
-  constructor(private toastCtrl: ToastController) { //
+  constructor(private toastCtrl: ToastController, private viewCtrl: ViewController) { //
        
        this.userLang = navigator.language.split("-")[0];  
        this.toastMessage = "Settings saved successfully! ;)";   
@@ -34,17 +34,6 @@ export class ConfiguracoesPage {
         console.log(settings);         
         if(settings){
           this.settingsInfo =JSON.parse(settings);
-        }
-        
-        if (this.settingsInfo == null || this.settingsInfo === undefined){
-            console.log("entrou no if.... settingsInfo null or undefined");
-            this.cycleEndsDay = 6;
-            this.budgetEndsOption = 0;
-            let today = new Date();
-            this.budgetEndsDate = new Date(today.getFullYear() + "-"+ Number(today.getMonth() + 1)+"-"+today.getDate()+ " 00:00:00").toISOString();
-            this.settingsInfo = {cycleEndsDay: this.cycleEndsDay, budgetEndsOption: this.budgetEndsOption, budgetEndsDate: this.budgetEndsDate};
-            this.budgetData.set('settingsInfo', JSON.stringify(this.settingsInfo));
-        }else{
           this.cycleEndsDay = this.settingsInfo.cycleEndsDay;
           this.budgetEndsOption = this.settingsInfo.budgetEndsOption;
           this.budgetEndsDate = this.settingsInfo.budgetEndsDate;
@@ -52,6 +41,8 @@ export class ConfiguracoesPage {
               this.budgetEndsDate = new Date(this.today.getFullYear() + "-"+ Number(this.today.getMonth() + 1)+"-"+this.today.getDate()+ " 00:00:00").toISOString();
           }
         }
+        
+      
         
       });
 }
@@ -74,7 +65,7 @@ export class ConfiguracoesPage {
 
       let toast = this.toastCtrl.create({
         message: this.toastMessage,
-        duration: 2000,
+        duration: 1700,
         position: 'bottom'
       });
 
@@ -84,5 +75,9 @@ export class ConfiguracoesPage {
       //alert("Salvo!");
       toast.present();  
       //console.log(this.settingsInfo.budgetEndsDate);  
+  }
+
+  closeThis(){
+    this.viewCtrl.dismiss();
   }
 }

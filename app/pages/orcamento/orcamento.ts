@@ -3,6 +3,7 @@ import { NavController, AlertController, Storage, SqlStorage, ToastController } 
 import {TranslatePipe} from "ng2-translate/ng2-translate";
 import { BudgetService } from './BudgetService';
 import { BudgetModel } from './BudgetModel';
+import {AdMob} from 'ionic-native';
 //.weeklyBudget
 
 @Component({
@@ -11,20 +12,21 @@ import { BudgetModel } from './BudgetModel';
   providers: [BudgetService]
 })
 export class OrcamentoPage {
-  
+  private admobId: any;
   budget;
   budgetData;
   init = 0;
   currMonth;  
-  expensesRecord : Array<{value: number, dateTime: string, long: string, lat: string}>;
+  expensesRecord : Array<{value: string, dateTime: string, long: string, lat: string}>;
   msgSavedMoney: string;
   public press: number = 0;
   public tap: number = 0;
 
   constructor(public navCtrl: NavController, public alerCtrl: AlertController, public toastCtrl: ToastController, public _budgetService: BudgetService) {
+    this.showAd();
     this.currMonth = (new Date().getMonth()).toString(); 
     this.budgetData = new Storage(SqlStorage, {name: 'SmartWeeklyBudgetDB'});    
-    this.expensesRecord = new Array<{value: number, dateTime: string, long: string, lat: string}>();
+    this.expensesRecord = new Array<{value: string, dateTime: string, long: string, lat: string}>();
     this.init = 1;
 
     this.budget = new BudgetModel();
@@ -241,7 +243,9 @@ export class OrcamentoPage {
             
             this.budgetData.set('userBudget', JSON.stringify(this.budget));
            
-            this.expensesRecord.push({value: parseFloat(data.Amount), dateTime: today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear() + " " + today.getHours() +":"+ today.getMinutes(), long: "", lat: ""});
+            let v : string = (parseFloat(data.Amount)).toFixed(2);
+
+            this.expensesRecord.push({value: v, dateTime: today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear() + " " + today.getHours() +":"+ today.getMinutes(), long: "", lat: ""});
 
             this.budgetData.set('expenses', JSON.stringify(this.expensesRecord));
 
@@ -303,6 +307,35 @@ export class OrcamentoPage {
        alert.setTitle("Manage this week's money");
        alert.present();
        this.press = 0;
+    }
+  }
+
+  showAd(){
+
+  
+    if( /(android)/i.test(navigator.userAgent) ) { // for android & amazon-fireos
+      this.admobId = {
+        banner: 'ca-app-pub-7960549698264832~3390669506', // or DFP format "/6253334/dfp_example_ad"
+        interstitial: 'ca-app-pub-7960549698264832/4867402707'
+      };
+    } else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) { // for ios
+      this.admobId = {
+        banner: 'ca-app-pub-7960549698264832~3390669506', // or DFP format "/6253334/dfp_example_ad"
+        interstitial: 'ca-app-pub-7960549698264832/4867402707'
+      };
+    } else { // for windows phone
+      this.admobId = {
+        banner: 'ca-app-pub-7960549698264832~3390669506', // or DFP format "/6253334/dfp_example_ad"
+        interstitial: 'ca-app-pub-7960549698264832/4867402707'
+      };
+    }
+
+    if(AdMob) {
+      AdMob.createBanner({
+        adId: this.admobId.banner,
+        isTesting: true,
+        autoShow: true
+      });            
     }
   }
 }
