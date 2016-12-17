@@ -6,7 +6,6 @@ import {ionicBootstrap, Platform, MenuController, Nav, Storage, SqlStorage, Moda
 import {StatusBar, AdMob} from 'ionic-native';
 import {ConfiguracoesPage} from './pages/configuracoes/configuracoes';
 import {TabsPage} from './pages/tabs/tabs';
-import {ListPage} from './pages/list/list';
 import {ExpensesLogsPage} from './pages/expenses-logs/expenses-logs';
 
 
@@ -18,14 +17,16 @@ enableProdMode();
 class MyApp {
   @ViewChild(Nav) nav: Nav;
   
-  // make HelloIonicPage the root (or first) page
+  
   rootPage: any = TabsPage;
+  
   pages: Array<{title: string, component: any}>;
   // cycleEndsDay: number;  
   // budgetEndsOption: number;
   // budgetEndsDate: any;
   // settingsInfo: {cycleEndsDay: number, budgetEndsOption: number, budgetEndsDate: any};
   settingsTitle;
+  expensesLogsTitle;
   budgetData;
   userLang;
   expensesRecord;
@@ -45,9 +46,10 @@ class MyApp {
     
     this.userLang = navigator.language.split("-")[0];
     this.settingsTitle = "Settings";
-
+    this.expensesLogsTitle = "Expenses log";
     if (this.userLang == "pt"){
       this.settingsTitle = "Configurações";
+      this.expensesLogsTitle = "Log de gastos";
     }
     
     this.initializeApp();
@@ -55,7 +57,7 @@ class MyApp {
     // set our app's pages
     this.pages = [
       { title: this.settingsTitle, component: ConfiguracoesPage },
-      { title: 'Expenses log', component: ExpensesLogsPage }
+      { title: this.expensesLogsTitle, component: ExpensesLogsPage }
     ];
     this.translateConfig();
   }
@@ -82,14 +84,10 @@ class MyApp {
     //this.nav.setRoot(page.component);
     console.log(page);
     switch (page.title) {
-      case "Expenses log":
-         this.budgetData.get('expenses').then((expenses) =>{        
-            if (expenses){
-                this.expensesRecord =JSON.parse(expenses);
-            }   
-            let xpenseLogModal = this.modalCtrl.create(ExpensesLogsPage, { expensesRecord: this.expensesRecord });
+      case this.expensesLogsTitle:
+        let xpenseLogModal = this.modalCtrl.create(ExpensesLogsPage);
             xpenseLogModal.present();
-        });
+        
         break;
       case this.settingsTitle:
         let settingsModal = this.modalCtrl.create(ConfiguracoesPage);
@@ -134,10 +132,8 @@ class MyApp {
 
 
 ionicBootstrap(MyApp, [[provide(TranslateLoader, {
-  useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
-  deps: [Http]
-}),
-  TranslateService]], {tabsPlacement: 'top', tabsHighlight: 'true'} 
-);
+                        useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
+                        deps: [Http]
+                      }), TranslateService]], {tabsPlacement: 'top', tabsHighlight: 'true'});
 
 

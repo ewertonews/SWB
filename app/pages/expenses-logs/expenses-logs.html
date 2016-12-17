@@ -18,7 +18,7 @@
 <ion-header>
   <ion-toolbar dark-blue>
     <ion-title>
-      Expenses log*
+      {{"Strings.expenses-log-title" | translate}}
     </ion-title>
     <ion-buttons start light-blue>
       <button ion-button (click)="closeThis()">
@@ -32,8 +32,8 @@
 <ion-content padding>
     <ion-list >
       <ion-item *ngFor="let expense of expensesRecord">
-        <p>Amount spent*: {{expense.value}}</p>
-        <p>Date and time*: {{expense.dateTime}}</p>
+        <p>{{"Strings.amount-spent" | translate}}: {{expense.value}}</p>
+        <p>{{"Strings.date-time" | translate}}: {{expense.dateTime}}</p>
       </ion-item>
     </ion-list>
     

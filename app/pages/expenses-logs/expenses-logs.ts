@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController,Storage, SqlStorage, NavParams,  ViewController } from 'ionic-angular';
+import {TranslatePipe} from "ng2-translate/ng2-translate";
 
 /*
   Generated class for the ExpensesLogsPage page.
@@ -9,6 +10,7 @@ import { NavController,Storage, SqlStorage, NavParams,  ViewController } from 'i
 */
 @Component({
   templateUrl: 'build/pages/expenses-logs/expenses-logs.html',
+  pipes: [TranslatePipe]
 })
 export class ExpensesLogsPage {
   
@@ -19,14 +21,12 @@ export class ExpensesLogsPage {
      this.budgetData = new Storage(SqlStorage, {name: 'SmartWeeklyBudgetDB'});
      this.expensesRecord = new Array<{value: string, dateTime: string, long: string, lat: string}>();
      //this.
-      this.expensesRecord = navParams.get('expensesRecord');
-      // this.budgetData.get('expenses').then((expenses) =>{  
+     this.budgetData.get('expenses').then((expenses) =>{  
         
-      //   if (expenses){
-      //      this.expensesRecord =JSON.parse(expenses);
-      //   }        
-      
-      // });
+        if (expenses){
+           this.expensesRecord =JSON.parse(expenses);
+        }    
+      });
   }
   
   closeThis(){

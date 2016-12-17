@@ -1,20 +1,23 @@
 import {TranslatePipe} from "ng2-translate/ng2-translate";
 import { Component } from '@angular/core';
 import { NavController, AlertController, Storage, SqlStorage } from 'ionic-angular';
-import { ListaContas } from './lista_de_contas';
+import { ContaModel } from './ContaModel';
 import { BudgetModel } from '../orcamento/BudgetModel';
 
 @Component({
   templateUrl: 'build/pages/contas/contas.html',
   pipes: [TranslatePipe]  
 })
+
 export class ContasPage {  
   budgetData;
   budget;
   init = 0;
-  ListaDeContas: Array<ListaContas>;
+  ListaDeContas: Array<ContaModel>;
+  
   constructor(public navCtrl: NavController, public alerCtrl: AlertController) {
-    this.ListaDeContas = new Array<ListaContas>();    
+    
+    this.ListaDeContas = new Array<ContaModel>();    
     this.budgetData = new Storage(SqlStorage, {name: 'SmartWeeklyBudgetDB'});
     this.init = 1;
 
@@ -52,7 +55,8 @@ export class ContasPage {
 
 
   addToBillsList(title: string, valuee: number){
-    let lista_contas: ListaContas = new ListaContas();
+    
+    let lista_contas: ContaModel = new ContaModel();
     lista_contas.bill_title = title;
     lista_contas.bill_amount = valuee;
     lista_contas.bill_isPaid = false;
@@ -91,8 +95,7 @@ export class ContasPage {
     console.log(this.budget); 
   }
 
-  addBill(){    
-    
+  addBill(){   
 
     let prompt = this.alerCtrl.create({
       title: 'Add a bill',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, Storage, SqlStorage, ToastController } from 'ionic-angular';
+import { NavController, AlertController, Storage, SqlStorage, ToastController, Platform } from 'ionic-angular';
 import {TranslatePipe} from "ng2-translate/ng2-translate";
 import { BudgetService } from './BudgetService';
 import { BudgetModel } from './BudgetModel';
@@ -22,7 +22,7 @@ export class OrcamentoPage {
   public press: number = 0;
   public tap: number = 0;
 
-  constructor(public navCtrl: NavController, public alerCtrl: AlertController, public toastCtrl: ToastController, public _budgetService: BudgetService) {
+  constructor(public navCtrl: NavController, public alerCtrl: AlertController, public toastCtrl: ToastController, public _budgetService: BudgetService, private platform: Platform) {
     this.showAd();
     this.currMonth = (new Date().getMonth()).toString(); 
     this.budgetData = new Storage(SqlStorage, {name: 'SmartWeeklyBudgetDB'});    
@@ -60,7 +60,9 @@ export class OrcamentoPage {
         if (this.init > 0 && tempBudget != null  && this.budget.balance != tempBudget.balance){
           //console.log("AFTER PAYING BILL: "+ JSON.stringify(tempBudget));
           //console.log("Valor que vai ser enviado pra o calculateBudget: "+ tempBudget.balance);
-          this.budget = this._budgetService.calculateBudget(tempBudget.balance);     
+          this._budgetService.calculateBudget(tempBudget.balance).then((budget) => {
+            this.budget = budget;
+          });    
         }
 
         if (tempBudget != null){
@@ -119,21 +121,31 @@ export class OrcamentoPage {
 
                     switch (data) {
                       case "1":
-                         this.budget = this.addFromLastWeekToThisWeekOnly(lastWeekbalance, i);                      
+                         this._budgetService.addFromLastWeekToThisWeekOnly(lastWeekbalance, i).then((budget) => {
+                           this.budget = budget;
+                         });                      
                         //
                       break;
                       case "3":
-                        let newBudget  = this.addToSavings(lastWeekbalance, this.currMonth);
-
-                        console.log("budget retornado to metodo save no BudgetService: "+ JSON.stringify(newBudget))
-
-                        newBudget.weeklyBudget[i-1].amount = 0;
-                        newBudget.balance = newBudget.balance - lastWeekbalance;
-                        this.budgetData.set('savings', JSON.stringify(newBudget));
+                      try {
+                        this._budgetService.save(lastWeekbalance, i).then((budget) => {
+                            this.budget = budget;               
+                            this.budgetData.set('userBudget', JSON.stringify(budget));
+                            let toast = this.toastCtrl.create({
+                              message: 'Great! you\'ve saved some money! \o/',
+                              duration: 1200
+                            });
+                            
+                          toast.present();
+                        });
+                      } catch (error) {
+                        let toast = this.toastCtrl.create({
+                        message: 'Oh snaps! something went wrong :(',
+                        duration: 1200
+                      });
+                      toast.present();
+                      }                        
                         
-                        this.budgetData.set('userBudget', JSON.stringify(newBudget));
-
-                         console.log("budget após economia: "+ JSON.stringify(newBudget))
                         break;                    
                       default:
                         break;
@@ -154,8 +166,9 @@ export class OrcamentoPage {
     }
 
   recalculate(){
-
-    this.budget = this._budgetService.calculateBudget(this.budget.balance);
+    this._budgetService.calculateBudget(this.budget.balance).then((budget) => {
+      this.budget = budget;
+    });
   }
 
   editBalance(){
@@ -181,7 +194,9 @@ export class OrcamentoPage {
           handler: data => {
             //console.log(data);
             // this.curr_balance = data.Amount;                       
-            this.budget = this._budgetService.calculateBudget(data.Amount);
+           this._budgetService.calculateBudget(data.Amount).then((budget) => {
+              this.budget = budget;
+           });
             
             // this.budgetData.get('userBudget').then((savedBudget) =>{
             //   console.log("Saved budget: "+savedBudget);
@@ -253,31 +268,9 @@ export class OrcamentoPage {
     prompt.present();
   }
 
-  addToSavings(amount:number, month:number): BudgetModel{
-    try {
-      let newBudget = this._budgetService.save(month, amount);
-      
-      let toast = this.toastCtrl.create({
-        message: 'Great! you\'ve saved some money! \o/',
-        duration: 3000
-      });
-      toast.present();
-      
-      return newBudget;
+  
 
-    } catch (error) {
-      let toast = this.toastCtrl.create({
-        message: 'Oh snaps! something went wrong :(',
-        duration: 3000
-      });
-      toast.present();
-    }
-    
-  }
-
-  addFromLastWeekToThisWeekOnly(amount: number, weekIndex: number) {
-    return this._budgetService.addFromLastWeekToThisWeekOnly(amount, weekIndex);    
-  }
+  
 
   getAmountPerDay(e, wb, days: Array<number>){
      this.tap++;
@@ -304,9 +297,7 @@ export class OrcamentoPage {
     }
   }
 
-  showAd(){
-
-  
+  showAd(){    
     if( /(android)/i.test(navigator.userAgent) ) { // for android & amazon-fireos
       this.admobId = {
         banner: 'ca-app-pub-7960549698264832~3390669506', // or DFP format "/6253334/dfp_example_ad"
@@ -323,13 +314,15 @@ export class OrcamentoPage {
         interstitial: 'ca-app-pub-7960549698264832/4867402707'
       };
     }
-
-    if(AdMob) {
+    this.platform.ready().then(() => {
+      if(AdMob) {
       AdMob.createBanner({
         adId: this.admobId.banner,
         isTesting: true,
         autoShow: true
       });            
-    }
+      }
+    });
+    
   }
 }

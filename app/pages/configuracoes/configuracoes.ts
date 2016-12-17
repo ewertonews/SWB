@@ -8,6 +8,7 @@ import {TranslatePipe} from "ng2-translate/ng2-translate";
   templateUrl: 'build/pages/configuracoes/configuracoes.html',
   pipes: [TranslatePipe]
 })
+
 export class ConfiguracoesPage {
 
   budgetData;

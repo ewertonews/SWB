@@ -11,7 +11,7 @@
   <ion-card>
   <ion-card-header class="contasTopCard">
     <ion-row>
-      Total Saved:*
+      {{"Strings.total-saved" | translate}}
     </ion-row>  
   </ion-card-header>
   <ion-card-content class="contasTopCard">      
@@ -22,7 +22,7 @@
   <ion-card-header>
    <ion-list>
       <ion-item>
-       <ion-label>Saved in:*</ion-label>
+       <ion-label>{{"Strings.saved-in" | translate}}</ion-label>
         <ion-select [(ngModel)]="monthSelection">
           <ion-option value="0">{{"Strings.Months.0" | translate}}</ion-option>
           <ion-option value="1">{{"Strings.Months.1" | translate}}</ion-option>

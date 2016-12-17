@@ -37,6 +37,15 @@
             "fri" : "Sexta",
             "sat" : "Sábado"
         },
-        "savedMoney" : "Great! You saved money from last week! \\o/ What do you wanna do?"     
+        "savedMoney" : "Great! You saved money from last week! \\o/ What do you wanna do?",
+        "spend": "Gastar",
+        "bills-total":"Total das contas",
+        "amount-spent": "Valor gasto",
+        "date-time" : "Data e hora",
+        "expenses-log-title":"Log de gastos",
+        "configuracoes-title":"Configurações",
+        "total-saved" : "Total economizado",
+        "saved-in" : "Economizado em", 
+        "save":"Salvar"      
     }    
 }

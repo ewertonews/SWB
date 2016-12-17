@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar dark-blue>
     <ion-title>
-      Settings*
+      {{"Strings.configuracoes-title" | translate}}
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="closeThis()">
@@ -48,5 +48,5 @@
     <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="budgetEndsDate"></ion-datetime>
   </ion-item>
 </ion-list>
-<button ion-button primary (click)="saveSettings()">Save*</button>
+<button ion-button full primary (click)="saveSettings()">{{"Strings.save" | translate}}</button>
 </ion-content>

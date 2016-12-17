@@ -36,6 +36,7 @@ export class EconomiastPage {
   }
 
   getMonthSavings(mon:number): string{
+     
      let savingsTotal:number = 0;
       if (this.savings){
         this.savings.forEach(savings => {
