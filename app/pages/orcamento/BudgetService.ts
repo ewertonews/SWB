@@ -140,7 +140,7 @@ export class BudgetService {
                             //num from 0 to 6 (sat to sund)
     public calculateBudget(saldo: number)
     {
-        
+       let weekId = 1; 
        return this.budgetData.get('settingsInfo').then((budgetSettings) => {
             this.budgetSettings = JSON.parse(budgetSettings);     
 
@@ -157,7 +157,7 @@ export class BudgetService {
 
             let amountPerDay: number = saldo / (remainingDays + 1);          
 
-            let budget = new Array<{dias: Array<number>, amount: number, month: number, initWeekAmount: number}>();;
+            let budget = new Array<{dias: Array<number>, amount: number, month: number, initWeekAmount: number, wId: number}>();;
 
             let weekNbudget: number = 0;
 
@@ -195,9 +195,10 @@ export class BudgetService {
 
                 budgetOfWeek =  parseFloat(String(daysOfweekN.length * amountPerDay));
                 
-                budget.push({dias: daysOfweekN, amount: budgetOfWeek, month: today.getMonth() + 1, initWeekAmount: budgetOfWeek});
+                budget.push({dias: daysOfweekN, amount: budgetOfWeek, month: today.getMonth() + 1, initWeekAmount: budgetOfWeek, wId: weekId});
                 //console.log("pushed budget after calculation: "+JSON.stringify(budget))
                 currentDate = this.addDays(currentDate, 1);
+                weekId++;
             }
 
             console.log("Budget local que vai ser setado no userBudget.weekBudget: "+ JSON.stringify(budget));

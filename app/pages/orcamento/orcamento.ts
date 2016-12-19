@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, Storage, SqlStorage, ToastController, Platform } from 'ionic-angular';
+import { NavController, AlertController, Storage, SqlStorage, ToastController, Platform,  ActionSheetController } from 'ionic-angular';
 import {TranslatePipe} from "ng2-translate/ng2-translate";
 import { BudgetService } from './BudgetService';
 import { BudgetModel } from './BudgetModel';
@@ -12,6 +12,7 @@ import {AdMob} from 'ionic-native';
   providers: [BudgetService]
 })
 export class OrcamentoPage {
+  decideLater: number;
   private admobId: any;
   budget;
   budgetData;
@@ -22,13 +23,20 @@ export class OrcamentoPage {
   public press: number = 0;
   public tap: number = 0;
 
-  constructor(public navCtrl: NavController, public alerCtrl: AlertController, public toastCtrl: ToastController, public _budgetService: BudgetService, private platform: Platform) {
+  constructor(
+      public navCtrl: NavController, 
+      public alerCtrl: AlertController, 
+      public toastCtrl: ToastController, 
+      public _budgetService: BudgetService,
+      private platform: Platform,
+      public actionsheetCtrl: ActionSheetController
+     ) {
     this.showAd();
     this.currMonth = (new Date().getMonth()).toString(); 
     this.budgetData = new Storage(SqlStorage, {name: 'SmartWeeklyBudgetDB'});    
     this.expensesRecord = new Array<{value: string, dateTime: string, long: string, lat: string}>();
     this.init = 1;
-
+    this.decideLater = 0;
     this.budget = new BudgetModel();
 
     this.budgetData.get('userBudget').then((budget) =>{
@@ -87,8 +95,8 @@ export class OrcamentoPage {
           // console.log("iiiiii:"+i);
           if(i > 0){          
             let lastWeekbalance = tempBudget.weeklyBudget[i-1].amount;
-
-            if (lastWeekbalance != 0){
+            
+            if (lastWeekbalance != 0 && this.decideLater == 0){
               if(lastWeekbalance > 0){
                 let alert = this.alerCtrl.create();
                 alert.setTitle("Great! You saved money from last week! \\o/ What do you wanna do?");
@@ -114,11 +122,15 @@ export class OrcamentoPage {
                   checked: false
                 });
 
-                alert.addButton('Decide Later');
+                alert.addButton({
+                  text: 'Decide Later',
+                  handler: ()=>{
+                    this.decideLater = 1;
+                  }
+                });
                 alert.addButton({
                   text: 'OK',
                   handler: data => {
-
                     switch (data) {
                       case "1":
                          this._budgetService.addFromLastWeekToThisWeekOnly(lastWeekbalance, i).then((budget) => {
@@ -135,7 +147,7 @@ export class OrcamentoPage {
                               message: 'Great! you\'ve saved some money! \o/',
                               duration: 1200
                             });
-                            
+                          this.decideLater = 0;
                           toast.present();
                         });
                       } catch (error) {
@@ -197,13 +209,7 @@ export class OrcamentoPage {
            this._budgetService.calculateBudget(data.Amount).then((budget) => {
               this.budget = budget;
            });
-            
-            // this.budgetData.get('userBudget').then((savedBudget) =>{
-            //   console.log("Saved budget: "+savedBudget);
-            //   this.budget.weeklyBudget = JSON.parse(savedBudget).weeklyBudget;
-            //   this.budget.balance = JSON.parse(savedBudget).balance;
-            //   this.budgetData.set('userBudget', JSON.stringify(this.budget));
-            // });
+   
           }
         }
       ]
@@ -275,25 +281,119 @@ export class OrcamentoPage {
   getAmountPerDay(e, wb, days: Array<number>){
      this.tap++;
      if(this.tap == 2){
-      //  console.log("tapped " + this.tap + "! :D");
-      //  console.log();
-      //  console.log(days);
-
+       let today = new Date();
+       let todaysDate = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
+       let totalSpent = 0;
+       this.expensesRecord.forEach((exp) => {
+         if(exp.dateTime.split(' ')[0] == todaysDate){
+           totalSpent = totalSpent + Number(exp.value);
+         }
+       });
        let alert = this.alerCtrl.create();
-       alert.setTitle("Amount per day:");
+       alert.setTitle("Limite diário");
        alert.setSubTitle((wb/days.length).toFixed(2));
+       alert.setMessage("Gasto hoje: " + totalSpent.toFixed(2));
        alert.present();
        this.tap = 0;
      }     
   }
 
-  showOptionsManageMoney(){
+  handleMoney(){
+    return new Promise(resolve => {
+      let prompt = this.alerCtrl.create({      
+              message: "Valor:",
+              inputs: [        
+                {
+                  name: 'amount',
+                  type: 'number'
+                },
+              ],
+              buttons: [
+                {
+                  text: 'Cancel',
+                  handler: data => {
+                    console.log('Cancel clicked');
+                  }
+                },
+                {
+                  text: 'Ok',
+                  handler: data => {}
+                } 
+              ]
+            });
+            prompt.present();
+    });
+  }
+
+  showOptionsManageMoney(e, weekbudget){
     this.press++;
     if(this.press == 1){
-       let alert = this.alerCtrl.create();
-       alert.setTitle("Manage this week's money");
-       alert.present();
-       this.press = 0;
+      let remainingWeeks = this.budget.weeklyBudget.length - weekbudget.wId;
+      let actionSheet = this.actionsheetCtrl.create({
+        title: 'Gerenciar orçamento da semana selecionada',
+        cssClass: 'action-sheets-basic-page',
+        buttons: [        
+          {
+            text: 'Economizar',
+            icon: !this.platform.is('ios') ? 'archive' : null,
+            handler: () => {
+              console.log('Favorite clicked');
+            }
+          },
+          {
+            text: 'Cancelar',
+            role: 'cancel', // will always sort to be on the bottom
+            icon: !this.platform.is('ios') ? 'close' : null,
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          }
+        ]
+      });
+      if (remainingWeeks >= 1){
+        actionSheet.addButton({
+            text: 'Enviar para próxima semana',
+            icon: !this.platform.is('ios') ? 'arrow-dropdown-circle' : null,
+            handler: () => {
+              console.log('Delete clicked');
+            }
+          });
+          actionSheet.addButton({
+            text: 'Trazer da próxima semana',
+            icon: !this.platform.is('ios') ? 'arrow-dropup-circle' : null,
+            handler: () => {
+             let navTransition = actionSheet.dismiss();
+             this.handleMoney().then(() => {
+                // once the async operation has completed
+                // then run the next nav transition after the
+                // first transition has finished animating out
+
+                navTransition.then(() => {
+                  this.navCtrl.pop();
+                });
+              });
+              //return false;
+            }
+          });
+      }
+      if(remainingWeeks >= 2){
+        actionSheet.addButton({
+          text: 'Trazer das semanas restantes ',
+            icon: !this.platform.is('ios') ? 'arrow-round-up' : null,
+            handler: () => {
+              console.log('Play clicked');
+            }
+        });
+        actionSheet.addButton({
+          text: 'Enviar para semanas restantes',
+            icon: !this.platform.is('ios') ? 'arrow-round-down' : null,
+            handler: () => {
+              console.log('Delete clicked');
+            }
+        });
+      }
+      actionSheet.present();
+      this.press = 0;
     }
   }
 
