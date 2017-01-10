@@ -3,10 +3,12 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, Storage, SqlStorage } from 'ionic-angular';
 import { ContaModel } from './ContaModel';
 import { BudgetModel } from '../orcamento/BudgetModel';
+import { BudgetService } from '../orcamento/BudgetService';
 
 @Component({
   templateUrl: 'build/pages/contas/contas.html',
-  pipes: [TranslatePipe]  
+  pipes: [TranslatePipe],
+  providers: [BudgetService]  
 })
 
 export class ContasPage {  
@@ -15,7 +17,7 @@ export class ContasPage {
   init = 0;
   ListaDeContas: Array<ContaModel>;
   
-  constructor(public navCtrl: NavController, public alerCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public alerCtrl: AlertController, public _budgetService: BudgetService) {
     
     this.ListaDeContas = new Array<ContaModel>();    
     this.budgetData = new Storage(SqlStorage, {name: 'SmartWeeklyBudgetDB'});
@@ -83,6 +85,9 @@ export class ContasPage {
         this.budget = JSON.parse(savedBudget);
         this.budget.balance = (parseFloat(this.budget.balance) - parseFloat(bill.bill_amount)).toFixed(2);
         this.budgetData.set('userBudget', JSON.stringify(this.budget));
+        this._budgetService.calculateBudget(this.budget.balance).then((budget) => {
+           this.budget = budget;
+        });
       });
     }else{
       this.budgetData.get('userBudget').then((savedBudget) =>{
@@ -95,8 +100,7 @@ export class ContasPage {
     console.log(this.budget); 
   }
 
-  addBill(){   
-
+  addBill(){
     let prompt = this.alerCtrl.create({
       title: 'Add a bill',
       message: "Enter the name and value of the bill",

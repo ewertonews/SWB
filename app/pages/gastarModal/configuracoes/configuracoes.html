@@ -3,7 +3,7 @@
     <ion-title>
       {{"Strings.configuracoes-title" | translate}}
     </ion-title>
-    <ion-buttons end>
+    <ion-buttons start>
       <button ion-button (click)="closeThis()">
         <span color="primary" showWhen="ios">Cancel</span>
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
@@ -12,8 +12,17 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content padding class="getting-started">
-<ion-list>
+ <!--<ion-label>Select the day to be the end of the week cycle:</ion-label>
+ <ion-select [(ngModel)]="selectedvalue">
+    <ion-option value="0" selected="true">Sunday**</ion-option>
+    <ion-option value="1" checked=false>Monday**</ion-option>
+    <ion-option value="2" checked=false>Tuesday**</ion-option>
+    <ion-option value="3" checked=false>Wedday**</ion-option>
+    <ion-option value="4" checked=false>Thursday**</ion-option>
+ </ion-select>-->
+ <ion-list>
   <ion-item>
     <ion-label>{{"Strings.cycle-ends-option" | translate}}</ion-label>
     <ion-select [(ngModel)]="cycleEndsDay">

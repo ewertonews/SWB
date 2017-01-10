@@ -9,12 +9,19 @@ export class BudgetService {
     budgetData;
     budgetSettings;
     savings : Array<{month: number, amount: number}>;
-
+    expensesRecord : Array<{value: string, dateTime: string, long: string, lat: string}>;
     constructor() {
         this.userBudget = new BudgetModel();
         this.budgetData = new Storage(SqlStorage, {name: 'SmartWeeklyBudgetDB'});
         this.savings = new Array<{month: number, amount: number, year: number}>();
         
+        this.budgetData.get('userBudget').then((budget) => {
+            console.log("budget salvo no db: "+JSON.stringify(budget))
+            if(budget){
+                this.userBudget =JSON.parse(budget);
+            }        
+        });    
+
         this.budgetData.get('settingsInfo').then((budgetSettings) => {
             if(budgetSettings){
                 this.budgetSettings = JSON.parse(budgetSettings);
@@ -24,6 +31,13 @@ export class BudgetService {
          this.budgetData.get('savings').then((savings) =>{
             if(savings){
                 this.savings = JSON.parse(savings);               
+            }
+        });
+
+        this.budgetData.get('expenses').then((expense) =>{
+            if(expense){
+                console.log("tem expenses");
+                this.expensesRecord = JSON.parse(expense);
             }
         });
     }    
@@ -83,7 +97,7 @@ export class BudgetService {
         //data do fim do ciclo
         return dateOfCycleEndsDay;
     }
-                                    //string that represents a date ("23/10/2016")
+                                    
     private getDateOfLastBusDay(lastDayOfMonth : Date) : Date
     {
         if (this.getDayOfWeek(lastDayOfMonth.getDay()) == "Sunday" || this.getDayOfWeek(lastDayOfMonth.getDay()) == "Saturday")
@@ -157,7 +171,9 @@ export class BudgetService {
 
             let amountPerDay: number = saldo / (remainingDays + 1);          
 
-            let budget = new Array<{dias: Array<number>, amount: number, month: number, initWeekAmount: number, wId: number}>();;
+            
+
+            let budget = new Array<{dias: Array<number>, amount: number, month: number, initWeekAmount: number, spentThisWeek:number, wId: number}>();;
 
             let weekNbudget: number = 0;
 
@@ -166,6 +182,7 @@ export class BudgetService {
             //24
             let currentDate: Date = new Date(today.getFullYear() + "-"+ Number(today.getMonth() + 1)+"-"+today.getDate()+ " 00:00:00");
             //lastDayOfMonth = 31
+            let weekI = 0;
             while (currentDate <= dateOfEndOfBudget)
             {
                 let budgetOfWeek = 0;
@@ -193,9 +210,15 @@ export class BudgetService {
                     }                                   
                 }
 
-                budgetOfWeek =  parseFloat(String(daysOfweekN.length * amountPerDay));
-                
-                budget.push({dias: daysOfweekN, amount: budgetOfWeek, month: today.getMonth() + 1, initWeekAmount: budgetOfWeek, wId: weekId});
+                budgetOfWeek =  parseFloat(String((daysOfweekN.length * amountPerDay).toFixed(2)));
+                let actualSpentThisWeek: number;
+                if(this.userBudget.weeklyBudget[weekI]){
+                    actualSpentThisWeek =  this.userBudget.weeklyBudget[weekI].spentThisWeek;
+                }                
+
+                if (!actualSpentThisWeek){actualSpentThisWeek = 0;}
+
+                budget.push({dias: daysOfweekN, amount: budgetOfWeek, month: today.getMonth() + 1, initWeekAmount: budgetOfWeek, spentThisWeek: actualSpentThisWeek,  wId: weekId});
                 //console.log("pushed budget after calculation: "+JSON.stringify(budget))
                 currentDate = this.addDays(currentDate, 1);
                 weekId++;
@@ -213,6 +236,39 @@ export class BudgetService {
 
             return this.userBudget
         });
+    }
+
+    public gastar(value: number){
+        let today = new Date();
+        let day = today.getDate(); 
+        let BreakException = {};
+        
+        this.userBudget.weeklyBudget.map(function(b){
+            if (b.dias.indexOf(day) > -1){
+            console.log(b.amount);
+            
+            b.amount = b.amount - value;
+            b.spentThisWeek = b.spentThisWeek + value;
+            return b;
+            }
+        });
+            
+        console.log("budget after map"+ JSON.stringify(this.userBudget));
+            
+        //this.curr_balance = this.curr_balance - data.Amount;
+        this.userBudget.balance = parseFloat((this.userBudget.balance - value).toString());
+        
+        this.budgetData.set('userBudget', JSON.stringify(this.userBudget));
+        
+        let v : string = (parseFloat(value.toString())).toFixed(2);
+
+        this.expensesRecord.push({value: v, dateTime: today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear() + " " + today.getHours() +":"+ today.getMinutes(), long: "", lat: ""});
+
+        this.budgetData.set('expenses', JSON.stringify(this.expensesRecord));
+
+        console.log(this.expensesRecord);
+
+        console.log("=================>"+JSON.stringify(this.userBudget));
     }
 
     public save(lastWeekBalance: number, weekIndex: number) 
@@ -259,9 +315,32 @@ export class BudgetService {
             this.budgetData.set('userBudget', JSON.stringify(this.userBudget))
             console.log("setado novobudget depois de adicionado à semana..");
             return this.userBudget;
-        });
-    
-        
+        });       
     }
+
+    public addFromLastWeekToRemainingWeeks(newAmount: number, weekIndex: number) 
+    {
+    
+        return this.budgetData.get('userBudget').then((bud) => {
+        //bud.weeklyBudget[weekIndex].amount =  bud.weekBudget[weekIndex].amount + newAmount;
+            this.userBudget = JSON.parse(bud);
+            let remainingWeeks = this.userBudget.weeklyBudget.length -  this.userBudget.weeklyBudget[weekIndex - 1].wId;
+            
+            let amountToShare = newAmount/remainingWeeks;            
+          
+
+            for (var weekIndex = weekIndex; weekIndex < this.userBudget.weeklyBudget.length; weekIndex++){
+                this.userBudget.weeklyBudget[weekIndex].amount = amountToShare;
+            }      
+           
+            this.userBudget.weeklyBudget[weekIndex - 1].amount = 0;           
+
+            this.budgetData.set('userBudget', JSON.stringify(this.userBudget))
+         
+            return this.userBudget;
+        });       
+    }
+
+    
 
 }

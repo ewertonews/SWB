@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript">
+
+  $(document).on("pageshow","#pageone",function(){ // When entering pagetwo
+    alert(sessionStorage.user);
+       $("#userName").val(sessionStorage.user);
+  });
+
+  function calculateBudget(){
+  user = $("#userName").val();
+  balance = $("#balance").val();
+  cycleEnds = $("#day").val();
+  url = "http://localhost:5926/api/CalculateBudget?cycleEnds=" +cycleEnds+"&saldo="+balance+"&userId="+user;  
+  alert(url);
+  $.ajax({
+    url:url,
+    type: 'GET',
+    success: function(data){
+      alert(JSON.stringify(data));
+    } 
+  });
+  }
+  </script>
+</head>
+<body>
+
+<div data-role="page" id="pageone">
+  <div data-role="header">
+    <h1>Create your budget</h1>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#">Budget Settings</a></li>
+        <li><a href="#">Page Two</a></li>
+        <li><a href="#">Search</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <form id="cBudget">
+      <label for="fname">Current balance:</label>
+      <input type="number" step="0.01" min="0" id="balance" placeholder="Your curent balance">
+      <br>
+      <label for="day">Select day to be the end of week cycle:</label>
+      <fieldset class="ui-field-contain">
+        <select name="day" id="day">
+          <option value="Monday">Monday</option>
+          <option value="Tuesday">Tuesday</option>
+          <option value="Wednesday">Wednesday</option>
+          <option value="Thursday">Thursday</option>
+          <option value="Friday">Friday</option>
+          <option value="Saturday">Saturday</option>
+          <option value="Sunday">Sunday</option>
+        </select>
+      </fieldset>
+      <input type="button" id="calcBudget" onclick="calculateBudget()" data-inline="true" value="Calculate Budget">
+    </form>
+  </div>
+  <input type="hidden" value="" id="userName"></input>
+</div>
+
+</body>
+</html>

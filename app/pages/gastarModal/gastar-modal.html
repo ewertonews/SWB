@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar dark-blue>
+    <ion-title>
+      Registrar gasto*
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="closeThis()">
+        <span color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="getting-started">
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Valor</ion-label>
+      <ion-input #input type="number"></ion-input>
+    </ion-item>
+
+    <!--<ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>-->
+
+  </ion-list>
+  
+</ion-content>
+<ion-footer>  
+  <ion-buttons end>
+    <button ion-button primary (click)="closeThis()">cancelar</button>  
+    <button ion-button primary (click)="gastar(input.value)">{{"Strings.save" | translate}}</button>  
+  </ion-buttons>  
+</ion-footer>

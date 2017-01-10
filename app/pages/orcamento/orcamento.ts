@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, Storage, SqlStorage, ToastController, Platform,  ActionSheetController } from 'ionic-angular';
+import { NavController, ViewController, AlertController, Storage, SqlStorage, ToastController, Platform,  ActionSheetController, ModalController } from 'ionic-angular';
 import {TranslatePipe} from "ng2-translate/ng2-translate";
 import { BudgetService } from './BudgetService';
 import { BudgetModel } from './BudgetModel';
 import {AdMob} from 'ionic-native';
+import {GastarModalPage} from '../gastarModal/gastar-modal';
 //.weeklyBudget
 
 @Component({
@@ -29,9 +30,10 @@ export class OrcamentoPage {
       public toastCtrl: ToastController, 
       public _budgetService: BudgetService,
       private platform: Platform,
-      public actionsheetCtrl: ActionSheetController
+      public actionsheetCtrl: ActionSheetController,
+      public modalCtrl: ModalController
      ) {
-    this.showAd();
+    //this.showAd();
     this.currMonth = (new Date().getMonth()).toString(); 
     this.budgetData = new Storage(SqlStorage, {name: 'SmartWeeklyBudgetDB'});    
     this.expensesRecord = new Array<{value: string, dateTime: string, long: string, lat: string}>();
@@ -44,7 +46,7 @@ export class OrcamentoPage {
         if(budget){
           this.budget =JSON.parse(budget);
         }        
-    })    
+    });    
         
    
     console.log("initial Saved budget: "+JSON.stringify(this.budget));
@@ -65,13 +67,17 @@ export class OrcamentoPage {
         let tempBudget = JSON.parse(budget);
         console.log("saldo do tempBudget: "+ tempBudget.balance);
 
-        if (this.init > 0 && tempBudget != null  && this.budget.balance != tempBudget.balance){
+        if (this.init > 0 && tempBudget != this.budget){
           //console.log("AFTER PAYING BILL: "+ JSON.stringify(tempBudget));
           //console.log("Valor que vai ser enviado pra o calculateBudget: "+ tempBudget.balance);
-          this._budgetService.calculateBudget(tempBudget.balance).then((budget) => {
-            this.budget = budget;
-          });    
+          //this._budgetService.calculateBudget(tempBudget.balance).then((budget) => {
+            this.budget = tempBudget;
+          //});    
         }
+
+        // if(this.budget != budget){
+        //   this.budget = budget;
+        // }
 
         if (tempBudget != null){
           let weeksArray = []
@@ -137,6 +143,11 @@ export class OrcamentoPage {
                            this.budget = budget;
                          });                      
                         //
+                      break;
+                      case "2":
+                        this._budgetService.addFromLastWeekToRemainingWeeks(lastWeekbalance, i).then((budget) => {
+                           this.budget = budget;
+                         });  
                       break;
                       case "3":
                       try {
@@ -218,6 +229,45 @@ export class OrcamentoPage {
   }
 
   spend(){
+    
+    let gastarModal = this.modalCtrl.create(GastarModalPage);
+    gastarModal.present();
+
+    gastarModal.onDidDismiss(val => {
+      if(val){
+        console.log("val do input: " + val);
+        let today = new Date();
+        let day = today.getDate(); 
+        let BreakException = {};
+        
+        this.budget.weeklyBudget.map(function(b){
+          if (b.dias.indexOf(day) > -1){
+      
+            b.amount = parseFloat(b.amount) - parseFloat(val);
+            b.spentThisWeek = parseFloat(b.spentThisWeek) + parseFloat(val);
+            return b;
+          }
+        });
+      
+        console.log("budget after map"+ JSON.stringify(this.budget));
+                
+        //this.curr_balance = this.curr_balance - data.Amount;
+        this.budget.balance = parseFloat((this.budget.balance - val).toString());
+              
+        this.budgetData.set('userBudget', JSON.stringify(this.budget));
+            
+        let v : string = (parseFloat(val)).toFixed(2);
+
+        this.expensesRecord.push({value: v, dateTime: today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear() + " " + today.getHours() +":"+ today.getMinutes(), long: "", lat: ""});
+
+        this.budgetData.set('expenses', JSON.stringify(this.expensesRecord));
+
+        console.log(this.expensesRecord);
+
+        console.log("=================>"+JSON.stringify(this.budget));
+      }      
+    });
+    /*
     let prompt = this.alerCtrl.create({      
       message: "Amount spent:",
       inputs: [        
@@ -247,6 +297,7 @@ export class OrcamentoPage {
                 console.log(b.amount);
                 console.log(data.amount);
                 b.amount = parseFloat(b.amount) - parseFloat(data.Amount);
+                b.spentThisWeek = parseFloat(b.spentThisWeek) + parseFloat(data.Amount);
                 return b;
               }
             });
@@ -272,13 +323,18 @@ export class OrcamentoPage {
       ]
     });
     prompt.present();
+    */
   }
 
   
-
+  getFixed2Amount(value: number){
+    if (value){
+      return value.toFixed(2);
+    }
+  }
   
 
-  getAmountPerDay(e, wb, days: Array<number>){
+  getBudgetSummary(e, spentThisWeek, initWb, days: Array<number>){
      this.tap++;
      if(this.tap == 2){
        let today = new Date();
@@ -290,9 +346,17 @@ export class OrcamentoPage {
          }
        });
        let alert = this.alerCtrl.create();
-       alert.setTitle("Limite diário");
-       alert.setSubTitle((wb/days.length).toFixed(2));
-       alert.setMessage("Gasto hoje: " + totalSpent.toFixed(2));
+       alert.setTitle("Resumo desta semana");
+
+       let limiteDiário = (initWb/days.length).toFixed(2);
+       let gastoHoje = totalSpent.toFixed(2);
+       let gastoEstaSemana = spentThisWeek.toFixed(2);
+
+       let mensagem = "Limite Diário: " + (initWb/days.length).toFixed(2) + 
+       "<br>Gasto hoje: "+ gastoHoje + "<br>Gasto esta semana: " + gastoEstaSemana;
+     
+       //alert.setSubTitle();
+       alert.setMessage(mensagem);      
        alert.present();
        this.tap = 0;
      }     

@@ -22,7 +22,7 @@
   <ion-card-content class="balanceContent">      
       <ion-row>
         <ion-col width-80 (click)="editBalance()">
-           <h1>{{"Strings.app_currency" | translate}} <span>{{budget.balance}}</span></h1>
+           <h1>{{"Strings.app_currency" | translate}} <span>{{getFixed2Amount(budget.balance)}}</span></h1>
         </ion-col>
         <ion-col>
           <button ion-button white style="height:3.4vh; marging-top:-2vh; width:6vw;" (click)="recalculate()"><ion-icon name="refresh"></ion-icon></button>
@@ -32,7 +32,7 @@
 </ion-card>
 <ion-card>
   <ion-card-content>
-    <ion-card  *ngFor="let weekbudget of budget.weeklyBudget" class="card-week" (press)="showOptionsManageMoney($event, weekbudget)" (tap)="getAmountPerDay($event, weekbudget.initWeekAmount, weekbudget.dias)">
+    <ion-card  *ngFor="let weekbudget of budget.weeklyBudget" class="card-week" (press)="showOptionsManageMoney($event, weekbudget)" (tap)="getBudgetSummary($event, weekbudget.spentThisWeek, weekbudget.initWeekAmount, weekbudget.dias)">
       <ion-card-header>
         <ion-row class="card-week-header">
           <ion-col width-70 *ngIf="weekbudget.dias[0] == weekbudget.dias[weekbudget.dias.length - 1]">
@@ -41,7 +41,7 @@
           <ion-col width-70 *ngIf="weekbudget.dias[0] != weekbudget.dias[weekbudget.dias.length - 1]">
             {{weekbudget.dias[0]}} - {{weekbudget.dias[weekbudget.dias.length - 1]}}/{{weekbudget.month}}
           </ion-col>      
-          <ion-col>{{"Strings.app_currency" | translate}} {{(weekbudget.amount).toFixed(2)}} | {{(weekbudget.initWeekAmount).toFixed(2)}}</ion-col>    
+          <ion-col>{{"Strings.app_currency" | translate}} {{getFixed2Amount(weekbudget.amount)}} | {{getFixed2Amount(weekbudget.initWeekAmount)}}</ion-col>    
         </ion-row>  
       </ion-card-header>
       <ion-card-content style="padding-botton:-2vh">
