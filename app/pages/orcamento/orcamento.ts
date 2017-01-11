@@ -68,11 +68,7 @@ export class OrcamentoPage {
         console.log("saldo do tempBudget: "+ tempBudget.balance);
 
         if (this.init > 0 && tempBudget != this.budget){
-          //console.log("AFTER PAYING BILL: "+ JSON.stringify(tempBudget));
-          //console.log("Valor que vai ser enviado pra o calculateBudget: "+ tempBudget.balance);
-          //this._budgetService.calculateBudget(tempBudget.balance).then((budget) => {
-           // this.budget = tempBudget;
-          //});    
+          //need fix  
         }
 
         // if(this.budget != budget){
